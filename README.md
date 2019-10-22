@@ -4,7 +4,7 @@ This [Laravel Nova](https://nova.laravel.com) package adds a notes and activity 
 
 ## Screenshots
 
-TODO
+![Detail view](docs/detail.png)
 
 ## Installation
 
