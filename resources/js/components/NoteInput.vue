@@ -4,13 +4,14 @@
       rows="3"
       placeholder="Order note"
       class="w-full form-control form-input form-input-bordered py-3 h-auto"
-      v-model="note"
+      v-bind:value="value"
+      v-on:input="$emit('input', $event.target.value)"
     />
 
     <div class="whitespace-no-wrap ml-2">
       <button
         class="btn btn-default btn-primary inline-flex items-center relative ml-auto"
-        @click="$emit('onSubmit', note)"
+        @click="$emit('onSubmit')"
         :disabled="loading"
       >
         Add note
@@ -21,8 +22,6 @@
 
 <script>
 export default {
-  data: () => ({
-    note: '',
-  }),
+  props: ['value', 'loading'],
 };
 </script>
