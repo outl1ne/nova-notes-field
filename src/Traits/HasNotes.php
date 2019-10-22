@@ -1,13 +1,12 @@
 <?php
 
-
 namespace OptimistDigital\NovaNotesField\Traits;
 
 use OptimistDigital\ZaveEcommerce\Models\OrderActivityItem;
 use Illuminate\Support\Facades\Auth;
 use OptimistDigital\NovaNotesField\Models\Note;
 
-trait HasActivityAndNotes
+trait HasNotes
 {
     public function addActivity($activityText, $system = true)
     {
