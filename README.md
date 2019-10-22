@@ -2,6 +2,14 @@
 
 This [Laravel Nova](https://nova.laravel.com) package adds a notes and activity field to Nova's arsenal of fields.
 
+## Features
+
+- Notes field on Detail view
+- Differentiation between user-added and system-added notes
+- Ability to add notes through the UI or programmatically
+- Ability to delete user-made notes (w/ confirmation modal)
+- Customizable placeholder support
+
 ## Screenshots
 
 ![Detail view](docs/detail.png)
@@ -42,7 +50,8 @@ class SomeResource extends Resource
   {
     return [
       // ...
-      NotesField::make('Notes'),
+      NotesField::make('Notes')
+        ->placeholder('Add note'), // Optional
     ]
   }
 }
