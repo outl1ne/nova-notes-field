@@ -1,0 +1,65 @@
+<?php
+
+namespace OptimistDigital\NovaNotesField\Http\Controllers;
+
+use Illuminate\Routing\Controller;
+use Illuminate\Http\Request;
+use Laravel\Nova\Nova;
+use Illuminate\Support\Facades\Auth;
+
+class NotesController extends Controller
+{
+    // GET /notes
+    public function getNotes(Request $request)
+    {
+        $validationResult = $this->validateRequest($request);
+        if ($validationResult['has_errors'] === true) return response($validationResult['errors'], 400);
+
+        $model = $validationResult['model'];
+        $notes = $model->notes()->orderBy('created_at', 'DESC')->get();
+
+        return response()->json($notes, 200);
+    }
+
+    // POST /notes
+    public function addNote(Request $request)
+    {
+        $validationResult = $this->validateRequest($request);
+        if ($validationResult['has_errors'] === true) return response($validationResult['errors'], 400);
+
+        $model = $validationResult['model'];
+        $note = $request->input('note');
+
+        if (empty($note)) return response(['errors' => ['note' => 'required']], 400);
+
+        $model->addNote($note);
+
+        return response('', 204);
+    }
+
+    private function validateRequest(Request $request)
+    {
+        $resourceId = $request->get('resourceId');
+        $resourceName = $request->get('resourceName');
+
+        $errors = [];
+        if (empty($resourceId)) $errors['resourceId'] = 'required';
+        if (empty($resourceName)) $errors['resourceName'] = 'required';
+
+        if (!empty($resourceName)) {
+            $resourceClass = Nova::resourceForKey($resourceName);
+            if (empty($resourceClass)) $errors['resourceName'] = 'invalid_name';
+            else {
+                $modelClass = $resourceClass::$model;
+                $model = $modelClass::find($resourceId);
+                if (empty($model)) $errors['resourceId'] = 'not_found';
+            }
+        }
+
+        return [
+            'has_errors' => sizeof($errors) > 0,
+            'errors' => $errors,
+            'model' => isset($model) ? $model : null,
+        ];
+    }
+}
