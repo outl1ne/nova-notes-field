@@ -7,25 +7,30 @@ use OptimistDigital\NovaNotesField\Models\Note;
 
 trait HasNotes
 {
-    public function addActivity($activityText, $system = true)
+    /**
+     * Creates a new note and attaches it to the model.
+     *
+     * @param string $note The note text which can contain raw HTML.
+     * @param bool $user Enables or disables the use of `Auth::user()` to set as the creator.
+     * @param bool $system Defines whether the note is system created and can be deleted or not.
+     * @return \OptimistDigital\NovaNotesField\Models\Note
+     **/
+    public function addNote($note, $user = true, $system = true)
     {
-        $user = Auth::user();
+        $user = $user ? Auth::user() : null;
         return $this->notes()->create([
-            'text' => $activityText,
+            'text' => $note,
             'created_by' => isset($user) ? $user->id : null,
             'system' => $system,
         ]);
     }
 
-    public function addNote($note)
-    {
-        return $this->notes()->create([
-            'text' => $note,
-            'created_by' => Auth::user()->id,
-            'system' => false,
-        ]);
-    }
-
+    /**
+     * Deletes a note with given ID and dissociates it from the model.
+     *
+     * @param int|string $noteId The ID of the note to delete.
+     * @return void
+     **/
     public function deleteNote($noteId)
     {
         $this->notes()->where('id', '=', $noteId)->delete();

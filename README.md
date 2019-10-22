@@ -1,6 +1,6 @@
 # Nova Notes Field
 
-This [Laravel Nova](https://nova.laravel.com) package adds a notes and activity field to Nova's arsenal of fields.
+This [Laravel Nova](https://nova.laravel.com) package adds a notes field to Nova's arsenal of fields.
 
 ## Features
 
@@ -55,6 +55,22 @@ class SomeResource extends Resource
     ]
   }
 }
+```
+
+## Adding notes programmatically
+
+To add notes programmatically, use the method provided by the `HasNotes` trait:
+
+```php
+/**
+ * Creates a new note and attaches it to the model.
+ *
+ * @param string $note The note text which can contain raw HTML.
+ * @param bool $user Enables or disables the use of `Auth::user()` to set as the creator.
+ * @param bool $system Defines whether the note is system created and can be deleted or not.
+ * @return \OptimistDigital\NovaNotesField\Models\Note
+ **/
+public function addNote($note, $user = true, $system = true)
 ```
 
 ## Credits

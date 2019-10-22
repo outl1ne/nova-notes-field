@@ -1,6 +1,6 @@
 {
   "name": "optimistdigital/nova-notes-field",
-  "description": "This Laravel Nova package adds a notes and activity field to Nova's arsenal of fields.",
+  "description": "This Laravel Nova package adds a notes field to Nova's arsenal of fields.",
   "keywords": [
     "laravel",
     "nova",
