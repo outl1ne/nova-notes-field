@@ -32,7 +32,7 @@ class NotesController extends Controller
 
         if (empty($note)) return response(['errors' => ['note' => 'required']], 400);
 
-        $model->addNote($note);
+        $model->addNote($note, true, false);
 
         return response('', 204);
     }
