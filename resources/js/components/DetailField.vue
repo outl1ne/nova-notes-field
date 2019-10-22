@@ -1,8 +1,20 @@
 <template>
   <div class="bg-20 border-b border-t border-40 -mx-6 -my-px py-4 px-4 pb-2">
     <h3 class="text-90 mb-4">{{ field.name }}</h3>
-    <note-input v-model.trim="note" @onSubmit="createNote" :loading="loading" />
-    <note v-for="note in notes" :note="note" :key="note.id" @onDeleteRequested="onNoteDeleteRequested" />
+    <note-input
+      v-model.trim="note"
+      @onSubmit="createNote"
+      :loading="loading"
+      :placeholder="field.placeholder || field.name"
+    />
+
+    <note
+      v-for="note in notes"
+      :note="note"
+      :key="note.id"
+      @onDeleteRequested="onNoteDeleteRequested"
+    />
+
     <delete-note-confirmation-modal
       v-if="showDeleteConfirmation"
       @close="showDeleteConfirmation = false"

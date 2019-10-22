@@ -10,4 +10,15 @@ class NotesField extends Field
     public $showOnCreation = false;
     public $showOnUpdate = false;
     public $showOnIndex = false;
+
+    /**
+     * Sets the placeholder value displayed on the field.
+     *
+     * @param string $placeholder
+     * @return \OptimistDigital\NovaNotesField\NotesField
+     **/
+    public function placeholder($placeholder)
+    {
+        return $this->withMeta(['placeholder' => $placeholder]);
+    }
 }
