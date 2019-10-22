@@ -21,14 +21,21 @@ export default {
   }),
   mounted() {
     this.fetchActivityItems();
+
+    console.info(this.resourceName, this.resourceId);
   },
   methods: {
     async fetchActivityItems() {
       this.loading = true;
 
-      const { data: activityItems } = await Nova.request().get(`/zave/ecommerce/orders/${this.resourceId}/activity`);
+      const { data: activityItems } = await Nova.request().get(`/zave/ecommerce/orders/${this.resourceId}/activity`, {
+        params: {
+          resourceId: this.resourceId,
+          resourceName: this.resourceName,
+        },
+      });
+      if (Array.isArray(activityItems)) this.activityItems = activityItems;
 
-      this.activityItems = activityItems;
       this.loading = false;
     },
   },
