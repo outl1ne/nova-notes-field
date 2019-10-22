@@ -26,6 +26,11 @@ trait HasNotes
         ]);
     }
 
+    public function deleteNote($noteId)
+    {
+        $this->notes()->where('id', '=', $noteId)->delete();
+    }
+
     public function notes()
     {
         return $this->morphMany(Note::class, 'notable');

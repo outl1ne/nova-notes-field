@@ -37,6 +37,22 @@ class NotesController extends Controller
         return response('', 204);
     }
 
+    // DELETE /notes
+    public function deleteNote(Request $request)
+    {
+        $validationResult = $this->validateRequest($request);
+        if ($validationResult['has_errors'] === true) return response($validationResult['errors'], 400);
+
+        $model = $validationResult['model'];
+        $noteId = $request->input('noteId');
+
+        if (empty($noteId)) return response(['errors' => ['noteId' => 'required']], 400);
+
+        $model->deleteNote($noteId);
+
+        return response('', 204);
+    }
+
     private function validateRequest(Request $request)
     {
         $resourceId = $request->get('resourceId');
