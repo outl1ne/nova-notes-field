@@ -9,11 +9,19 @@
     />
 
     <note
-      v-for="note in notes"
+      v-for="note in notesToShow"
       :note="note"
       :key="note.id"
       @onDeleteRequested="onNoteDeleteRequested"
     />
+
+    <div class="flex justify-center mb-3 mt-3" v-if="hasMoreToShow">
+      <span
+        class="btn btn-default btn-primary leading-tight ml-2 px-3 text-sm text-center cursor-pointer"
+        style="height: 24px; line-height: 24px;"
+        @click="maxToShow = void 0"
+      >Show all notes ({{ notes.length - maxToShow }} more)</span>
+    </div>
 
     <delete-note-confirmation-modal
       v-if="showDeleteConfirmation"
@@ -37,6 +45,7 @@ export default {
     notes: [],
     showDeleteConfirmation: false,
     noteToDelete: void 0,
+    maxToShow: 5,
   }),
   mounted() {
     this.fetchNotes();
@@ -47,6 +56,13 @@ export default {
         resourceId: this.resourceId,
         resourceName: this.resourceName,
       };
+    },
+    notesToShow() {
+      if (this.maxToShow) return this.notes.slice(0, this.maxToShow);
+      return this.notes;
+    },
+    hasMoreToShow() {
+      return this.maxToShow && this.notes.length > this.maxToShow;
     },
   },
   methods: {
