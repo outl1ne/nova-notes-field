@@ -1,0 +1,43 @@
+{
+  "name": "optimistdigital/nova-notes-field",
+  "description": "This Laravel Nova package adds a notes and activity field to Nova's arsenal of fields.",
+  "keywords": [
+    "laravel",
+    "nova",
+    "optimistdigital",
+    "field"
+  ],
+  "authors": [
+    {
+      "name": "Tarvo Reinpalu",
+      "email": "tarvoreinpalu@gmail.com",
+      "role": "Developer"
+    },
+    {
+      "name": "Optimist Digital",
+      "email": "info@optimistdigital.com",
+      "role": "Maintainer"
+    }
+  ],
+  "license": "MIT",
+  "require": {
+    "php": ">=7.1.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "OptimistDigital\\NovaNotesField\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "OptimistDigital\\NovaNotesField\\FieldServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "sort-packages": true
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true
+}
