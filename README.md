@@ -18,7 +18,7 @@ php artisan migrate
 
 ## Usage
 
-Add `HasNotes` trait to the model that has the notes.
+Add `HasNotes` trait to the model that has the notes:
 
 ```php
 use OptimistDigital\NovaNotesField\Traits\HasNotes;
@@ -26,6 +26,25 @@ use OptimistDigital\NovaNotesField\Traits\HasNotes;
 class ExampleModel extends Model
 {
     use HasNotes;
+}
+```
+
+Add `NotesField` to the matching resource:
+
+```php
+use OptimistDigital\NovaNotesField\NotesField;
+
+class SomeResource extends Resource
+{
+  // ...
+
+  public function fields(Request $request)
+  {
+    return [
+      // ...
+      NotesField::make('Notes'),
+    ]
+  }
 }
 ```
 
