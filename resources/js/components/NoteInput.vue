@@ -10,7 +10,7 @@
     <div class="whitespace-no-wrap ml-2">
       <button
         class="btn btn-default btn-primary inline-flex items-center relative ml-auto"
-        @click="createNote"
+        @click="$emit('onSubmit', note)"
         :disabled="loading"
       >
         Add note
@@ -21,21 +21,8 @@
 
 <script>
 export default {
-  props: ['resourceId'],
   data: () => ({
-    loading: false,
     note: '',
   }),
-  methods: {
-    async createNote() {
-      if (!this.note) return;
-
-      this.loading = true;
-      await Nova.request().post(`/zave/ecommerce/orders/${this.resourceId}/activity`, { note: this.note });
-      this.$emit('noteAdded');
-      this.note = '';
-      this.loading = false;
-    },
-  },
 };
 </script>

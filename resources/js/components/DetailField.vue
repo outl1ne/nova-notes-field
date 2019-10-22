@@ -1,40 +1,51 @@
 <template>
   <div class="bg-20 border-b border-t border-40 -mx-6 -my-px py-4 px-4 pb-2">
-    <h3 class="text-90 mb-4">Order notes</h3>
+    <h3 class="text-90 mb-4">{{ field.name }}</h3>
 
-    <note-entry-field :resourceId="resourceId" @noteAdded="fetchActivityItems" />
+    <note-input @onSubmit="createNote" />
 
-    <activity-item v-for="item in activityItems" :item="item" :key="item.id" />
+    <note v-for="note in notes" :note="note" :key="note.id" />
   </div>
 </template>
 
 <script>
-import ActivityItem from './ActivityItem';
-import NoteEntryField from './NoteEntryField';
+import Note from './Note';
+import NoteInput from './NoteInput';
 
 export default {
-  components: { ActivityItem, NoteEntryField },
+  components: { Note, NoteInput },
   props: ['resource', 'resourceName', 'resourceId', 'field'],
   data: () => ({
     loading: true,
-    activityItems: [],
+    notes: [],
   }),
   mounted() {
-    this.fetchActivityItems();
-
-    console.info(this.resourceName, this.resourceId);
+    this.fetchNotes();
+  },
+  computed: {
+    params() {
+      return {
+        resourceId: this.resourceId,
+        resourceName: this.resourceName,
+      };
+    },
   },
   methods: {
-    async fetchActivityItems() {
+    async fetchNotes() {
       this.loading = true;
 
-      const { data: activityItems } = await Nova.request().get(`/zave/ecommerce/orders/${this.resourceId}/activity`, {
-        params: {
-          resourceId: this.resourceId,
-          resourceName: this.resourceName,
-        },
+      const { data: notes } = await Nova.request().get(`/nova-vendor/nova-notes/notes`, {
+        params: this.params,
       });
-      if (Array.isArray(activityItems)) this.activityItems = activityItems;
+      if (Array.isArray(notes)) this.notes = notes;
+
+      this.loading = false;
+    },
+    async createNote(note) {
+      this.loading = true;
+
+      await Nova.request().post(`/nova-vendor/nova-notes/notes`, { note }, { params: this.params });
+      await this.fetchNotes();
 
       this.loading = false;
     },
