@@ -70,7 +70,7 @@ To add notes programmatically, use the method provided by the `HasNotes` trait:
  * @param bool $system Defines whether the note is system created and can be deleted or not.
  * @return \OptimistDigital\NovaNotesField\Models\Note
  **/
-public function addNote($note, $user = true, $system = true)
+public function addNote($note, $user = true, $system = true);
 ```
 
 ## Credits
