@@ -16,7 +16,7 @@ class NotesController extends Controller
         if ($validationResult['has_errors'] === true) return response($validationResult['errors'], 400);
 
         $model = $validationResult['model'];
-        $notes = $model->notes()->orderBy('created_at', 'DESC')->get();
+        $notes = $model->notes()->orderBy('created_at', 'DESC')->orderBy('id', 'DESC')->get();
 
         return response()->json($notes, 200);
     }
