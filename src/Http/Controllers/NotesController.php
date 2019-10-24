@@ -5,7 +5,6 @@ namespace OptimistDigital\NovaNotesField\Http\Controllers;
 use Illuminate\Routing\Controller;
 use Illuminate\Http\Request;
 use Laravel\Nova\Nova;
-use Illuminate\Support\Facades\Auth;
 
 class NotesController extends Controller
 {

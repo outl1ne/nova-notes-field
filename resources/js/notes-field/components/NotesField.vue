@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-20 border-b border-t border-40 -mx-6 -my-px py-4 px-4 pb-2">
+  <div :class="classes">
     <h3 class="text-90 mb-4">{{ field.name }}</h3>
     <note-input
       v-model.trim="note"
@@ -38,7 +38,7 @@ import DeleteNoteConfirmationModal from './DeleteNoteConfirmationModal';
 
 export default {
   components: { Note, NoteInput, DeleteNoteConfirmationModal },
-  props: ['resource', 'resourceName', 'resourceId', 'field'],
+  props: ['resourceName', 'resourceId', 'field', 'extraClass'],
   data: () => ({
     note: '',
     loading: true,
@@ -63,6 +63,10 @@ export default {
     },
     hasMoreToShow() {
       return this.maxToShow && this.notes.length > this.maxToShow;
+    },
+    classes() {
+      const defaultClasses = 'notes-field bg-20 px-4 pt-4 pb-2 rounded-b-lg overflow-hidden border-b border-40';
+      return defaultClasses + (this.extraClass ? ` ${this.extraClass}` : '');
     },
   },
   methods: {
@@ -102,3 +106,10 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.notes-field:not(:last-child) {
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+</style>

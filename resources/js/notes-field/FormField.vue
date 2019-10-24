@@ -1,14 +1,14 @@
 <template>
-  <default-field :field="field">
-    Form Field
-  </default-field>
+  <notes-field :field="field" :resourceName="resourceName" :resourceId="resourceId" />
 </template>
 
 <script>
 import { Errors, FormField, HandlesValidationErrors, InteractsWithDates } from 'laravel-nova';
+import NotesField from './components/NotesField';
 
 export default {
-  props: ['resourceId'],
+  props: ['field', 'resourceId', 'resourceName'],
+  components: { NotesField },
   mixins: [HandlesValidationErrors, FormField, InteractsWithDates],
 };
 </script>
