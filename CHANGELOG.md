@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Changed `text` column from `string` to `text` to increase its capacity
+- Changed `text` column from `string` to `text` to increase its capacity (`php artisan migrate` required)
 - Fixed profile image shrinking due to long content
 - Updated packages
 
