@@ -8,19 +8,15 @@
       :placeholder="field.placeholder || field.name"
     />
 
-    <note
-      v-for="note in notesToShow"
-      :note="note"
-      :key="note.id"
-      @onDeleteRequested="onNoteDeleteRequested"
-    />
+    <note v-for="note in notesToShow" :note="note" :key="note.id" @onDeleteRequested="onNoteDeleteRequested" />
 
     <div class="flex justify-center mb-3 mt-3" v-if="hasMoreToShow">
       <span
         class="btn btn-default btn-primary leading-tight ml-2 px-3 text-sm text-center cursor-pointer"
         style="height: 24px; line-height: 24px;"
         @click="maxToShow = void 0"
-      >Show all notes ({{ notes.length - maxToShow }} more)</span>
+        >Show all notes ({{ notes.length - maxToShow }} more)</span
+      >
     </div>
 
     <delete-note-confirmation-modal
