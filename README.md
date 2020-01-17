@@ -73,6 +73,24 @@ To add notes programmatically, use the method provided by the `HasNotes` trait:
 public function addNote($note, $user = true, $system = true)
 ```
 
+## Configuration
+
+### Publish configuration
+
+You can publish the configuration by running:
+
+```bash
+php artisan vendor:publish --tag="nova-notes-field-config"
+```
+
+The available configuration option(s):
+
+| Config         | Type     | description                                                                                                                                                  |
+| -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| get_avatar_url | callable | Callable which allows you to generate your own URL for the user. The input parameter is the user model. By default, Gravatar is used for the user's avatars. |
+|                |          |                                                                                                                                                              |
+|                |          |                                                                                                                                                              |
+
 ## Credits
 
 - [Tarvo Reinpalu](https://github.com/Tarpsvo)

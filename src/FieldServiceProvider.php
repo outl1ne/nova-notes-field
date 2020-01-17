@@ -14,6 +14,11 @@ class FieldServiceProvider extends ServiceProvider
         // Load migrations
         $this->loadMigrationsFrom(__DIR__ . '/../migrations');
 
+        // Config
+        $this->publishes([
+            __DIR__ . '/../config/nova-notes-field.php' => config_path('nova-notes-field.php'),
+        ], 'nova-notes-field-config');
+
         // Serve assets
         Nova::serving(function (ServingNova $event) {
             Nova::script('nova-notes-field', __DIR__ . '/../dist/js/field.js');
@@ -34,10 +39,5 @@ class FieldServiceProvider extends ServiceProvider
             ->prefix('nova-vendor/nova-notes')
             ->namespace('\OptimistDigital\NovaNotesField\Http\Controllers')
             ->group(__DIR__ . '/../routes/api.php');
-    }
-
-    public function register()
-    {
-        //
     }
 }
