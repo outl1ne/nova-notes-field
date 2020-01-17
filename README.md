@@ -88,8 +88,6 @@ The available configuration option(s):
 | Config         | Type     | description                                                                                                                                                  |
 | -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | get_avatar_url | callable | Callable which allows you to generate your own URL for the user. The input parameter is the user model. By default, Gravatar is used for the user's avatars. |
-|                |          |                                                                                                                                                              |
-|                |          |                                                                                                                                                              |
 
 ## Credits
 
