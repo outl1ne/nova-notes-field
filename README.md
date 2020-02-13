@@ -89,6 +89,16 @@ The available configuration option(s):
 | -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | get_avatar_url | callable | Callable which allows you to generate your own URL for the user. The input parameter is the user model. By default, Gravatar is used for the user's avatars. |
 
+## Localization
+
+The translation file(s) can be published by using the following publish command:
+
+```bash
+php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\FieldServiceProvider" --tag="translations"
+```
+
+You can add your translations to `resources/lang/vendor/nova-notes-field/` by creating a new translations file with the locale name (ie `se.json`) and copying the JSON from the existing `en.json`.
+
 ## Credits
 
 - [Tarvo Reinpalu](https://github.com/Tarpsvo)
