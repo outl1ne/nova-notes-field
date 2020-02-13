@@ -15,6 +15,11 @@ class FieldServiceProvider extends ServiceProvider
         // Load migrations
         $this->loadMigrationsFrom(__DIR__ . '/../migrations');
 
+        // Publish migrations
+        $this->publishes([
+            __DIR__ . '/../migrations' => database_path('migrations'),
+        ], 'migrations');
+
         // Config
         $this->publishes([
             __DIR__ . '/../config/nova-notes-field.php' => config_path('nova-notes-field.php'),

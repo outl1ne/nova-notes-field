@@ -99,6 +99,14 @@ php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\FieldServi
 
 You can add your translations to `resources/lang/vendor/nova-notes-field/` by creating a new translations file with the locale name (ie `se.json`) and copying the JSON from the existing `en.json`.
 
+## Publishing migrations (optional)
+
+If you want to edit the migration(s), you can publish the migrations like so:
+
+```bash
+php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\FieldServiceProvider" --tag="migrations"
+```
+
 ## Credits
 
 - [Tarvo Reinpalu](https://github.com/Tarpsvo)
