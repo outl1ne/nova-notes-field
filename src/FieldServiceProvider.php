@@ -23,7 +23,7 @@ class FieldServiceProvider extends ServiceProvider
         // Config
         $this->publishes([
             __DIR__ . '/../config/nova-notes-field.php' => config_path('nova-notes-field.php'),
-        ], 'nova-notes-field-config');
+        ], 'config');
 
         // Serve assets
         Nova::serving(function (ServingNova $event) {
@@ -78,5 +78,10 @@ class FieldServiceProvider extends ServiceProvider
             return true;
         }
         return false;
+    }
+
+    public static function getTableName()
+    {
+        return config('nova-notes-field.table_name', 'nova_notes');
     }
 }

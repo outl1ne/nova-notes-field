@@ -80,13 +80,14 @@ public function addNote($note, $user = true, $system = true)
 You can publish the configuration by running:
 
 ```bash
-php artisan vendor:publish --tag="nova-notes-field-config"
+php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\FieldServiceProvider" --tag="config"
 ```
 
 The available configuration option(s):
 
 | Config         | Type     | description                                                                                                                                                  |
 | -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| table_name     | string   | Optionally provide your own table name for the notes table. Default is `nova_notes`.                                                                         |
 | get_avatar_url | callable | Callable which allows you to generate your own URL for the user. The input parameter is the user model. By default, Gravatar is used for the user's avatars. |
 
 ## Localization

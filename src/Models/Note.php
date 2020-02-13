@@ -4,6 +4,7 @@ namespace OptimistDigital\NovaNotesField\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
+use OptimistDigital\NovaNotesField\FieldServiceProvider;
 use OptimistDigital\NovaNotesField\NotesField;
 
 class Note extends Model
@@ -11,6 +12,12 @@ class Note extends Model
     protected $table = 'nova_notes';
     protected $fillable = ['model_id', 'model_type', 'text', 'created_by', 'system'];
     protected $appends = ['created_by_avatar_url', 'can_delete'];
+
+    public function __construct(array $attributes = [])
+    {
+        parent::__construct($attributes);
+        $this->setTable(FieldServiceProvider::getTableName());
+    }
 
     public function notable()
     {
