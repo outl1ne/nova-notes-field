@@ -5,7 +5,7 @@
       v-model.trim="note"
       @onSubmit="createNote"
       :loading="loading"
-      :placeholder="field.placeholder || field.name"
+      :placeholder="field.placeholder || __('novaNotesField.defaultPlaceholder')"
     />
 
     <note v-for="note in notesToShow" :note="note" :key="note.id" @onDeleteRequested="onNoteDeleteRequested" />
@@ -15,7 +15,7 @@
         class="btn btn-default btn-primary leading-tight ml-2 px-3 text-sm text-center cursor-pointer"
         style="height: 24px; line-height: 24px;"
         @click="maxToShow = void 0"
-        >Show all notes ({{ notes.length - maxToShow }} more)</span
+        >{{ __('novaNotesField.showMoreNotes', { hiddenNoteCount: notes.length - maxToShow }) }}</span
       >
     </div>
 

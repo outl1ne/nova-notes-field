@@ -14,7 +14,7 @@
         @click="$emit('onSubmit')"
         :disabled="loading"
       >
-        Add note
+        {{ __('novaNotesField.addNote') }}
       </button>
     </div>
   </div>

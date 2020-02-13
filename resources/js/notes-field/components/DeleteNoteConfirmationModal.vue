@@ -2,20 +2,20 @@
   <modal @modal-close="handleClose">
     <form @submit.prevent="handleConfirm" class="bg-white rounded-lg shadow-lg overflow-hidden" style="width: 460px">
       <div class="p-8">
-        <heading :level="2" class="mb-6">Delete Note</heading>
+        <heading :level="2" class="mb-6">{{ __('novaNotesField.deleteNoteTitle') }}</heading>
         <p class="text-80 leading-normal">
-          Are you sure you want to delete this note?
+          {{ __('novaNotesField.deleteConfirmation') }}
         </p>
       </div>
 
       <div class="bg-30 px-6 py-3 flex">
         <div class="ml-auto">
           <button type="button" @click.prevent="handleClose" class="btn text-80 font-normal h-9 px-3 mr-3 btn-link">
-            Cancel
+            {{ __('novaNotesField.cancel') }}
           </button>
 
           <button id="confirm-delete-button" ref="confirmButton" type="submit" class="btn btn-default btn-danger">
-            Delete
+            {{ __('novaNotesField.delete') }}
           </button>
         </div>
       </div>

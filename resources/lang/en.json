@@ -1,0 +1,11 @@
+{
+  "novaNotesField.defaultPlaceholder": "Write note",
+  "novaNotesField.addNote": "Add note",
+  "novaNotesField.showMoreNotes": "Show all notes (:hiddenNoteCount more)",
+  "novaNotesField.delete": "Delete",
+  "novaNotesField.deleteConfirmation": "Are you sure you want to delete this note?",
+  "novaNotesField.cancel": "Cancel",
+  "novaNotesField.deleteNoteTitle": "Delete Note",
+  "novaNotesField.systemUserAbbreviation": "SYS",
+  "novaNotesField.systemUserName": "System"
+}

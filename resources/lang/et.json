@@ -1,0 +1,11 @@
+{
+  "novaNotesField.defaultPlaceholder": "Kirjuta märge",
+  "novaNotesField.addNote": "Lisa märge",
+  "novaNotesField.showMoreNotes": "Näite kõiki märkmeid (:hiddenNoteCount veel)",
+  "novaNotesField.delete": "Kustuta",
+  "novaNotesField.deleteConfirmation": "Kas oled kindel, et soovid märkme kustutada?",
+  "novaNotesField.cancel": "Katkesta",
+  "novaNotesField.deleteNoteTitle": "Kustuta Märge",
+  "novaNotesField.systemUserAbbreviation": "SÜS",
+  "novaNotesField.systemUserName": "Süsteem"
+}
