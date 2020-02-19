@@ -18,7 +18,7 @@ return [
     | Notes Model
     |--------------------------------------------------------------------------
     |
-    | Optionally provide your own Notes model.
+    | Optionally provide your own Note model.
     |
     */
 
