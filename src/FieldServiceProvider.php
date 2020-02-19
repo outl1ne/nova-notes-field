@@ -84,4 +84,9 @@ class FieldServiceProvider extends ServiceProvider
     {
         return config('nova-notes-field.table_name', 'nova_notes');
     }
+
+    public static function getNotesModel()
+    {
+        return config('nova-notes-field.notes_model', \OptimistDigital\NovaNotesField\Models\Note::class);
+    }
 }

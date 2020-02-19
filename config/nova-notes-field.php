@@ -13,6 +13,16 @@ return [
 
     'table_name' => 'nova_notes',
 
+    /*
+    |--------------------------------------------------------------------------
+    | Notes Model
+    |--------------------------------------------------------------------------
+    |
+    | Optionally provide your own Notes model.
+    |
+    */
+
+    'notes_model' => \OptimistDigital\NovaNotesField\Models\Note::class,
 
     /*
     |--------------------------------------------------------------------------
