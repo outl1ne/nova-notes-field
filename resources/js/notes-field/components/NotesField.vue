@@ -6,6 +6,7 @@
       @onSubmit="createNote"
       :loading="loading"
       :placeholder="field.placeholder || __('novaNotesField.defaultPlaceholder')"
+      :trixEnabled="trixEnabled"
     />
 
     <note
@@ -49,6 +50,7 @@ export default {
     noteToDelete: void 0,
     maxToShow: 5,
     dateFormat: 'DD MMM YYYY HH:mm',
+    trixEnabled: false,
   }),
   mounted() {
     this.fetchNotes();
@@ -79,10 +81,11 @@ export default {
       const { data } = await Nova.request().get(`/nova-vendor/nova-notes/notes`, {
         params: this.params,
       });
-      const { notes, date_format: dateFormat } = data;
+      const { notes, date_format: dateFormat, trix_enabled: trixEnabled } = data;
 
       if (Array.isArray(notes)) this.notes = notes;
       this.dateFormat = dateFormat;
+      this.trixEnabled = trixEnabled;
 
       this.loading = false;
     },

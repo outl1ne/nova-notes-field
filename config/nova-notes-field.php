@@ -55,4 +55,17 @@ return [
     */
 
     'date_format' => 'DD MMM YYYY HH:mm',
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Trix input
+    |--------------------------------------------------------------------------
+    |
+    | Set to 'true' if you wish to use the Trix WYSIWYG input instead
+    | of the default textarea.
+    |
+    */
+
+    'use_trix_input' => false,
 ];
