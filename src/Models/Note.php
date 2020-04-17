@@ -5,7 +5,6 @@ namespace OptimistDigital\NovaNotesField\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Auth;
 use OptimistDigital\NovaNotesField\FieldServiceProvider;
-use OptimistDigital\NovaNotesField\NotesField;
 
 class Note extends Model
 {
