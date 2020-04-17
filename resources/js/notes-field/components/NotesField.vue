@@ -8,7 +8,13 @@
       :placeholder="field.placeholder || __('novaNotesField.defaultPlaceholder')"
     />
 
-    <note v-for="note in notesToShow" :note="note" :key="note.id" @onDeleteRequested="onNoteDeleteRequested" />
+    <note
+      v-for="note in notesToShow"
+      :note="note"
+      :key="note.id"
+      :date-format="dateFormat"
+      @onDeleteRequested="onNoteDeleteRequested"
+    />
 
     <div class="flex justify-center mb-3 mt-3" v-if="hasMoreToShow">
       <span
@@ -42,6 +48,7 @@ export default {
     showDeleteConfirmation: false,
     noteToDelete: void 0,
     maxToShow: 5,
+    dateFormat: 'DD MMM YYYY HH:mm',
   }),
   mounted() {
     this.fetchNotes();
@@ -69,10 +76,13 @@ export default {
     async fetchNotes() {
       this.loading = true;
 
-      const { data: notes } = await Nova.request().get(`/nova-vendor/nova-notes/notes`, {
+      const { data } = await Nova.request().get(`/nova-vendor/nova-notes/notes`, {
         params: this.params,
       });
+      const { notes, date_format: dateFormat } = data;
+
       if (Array.isArray(notes)) this.notes = notes;
+      this.dateFormat = dateFormat;
 
       this.loading = false;
     },

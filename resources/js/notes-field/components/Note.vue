@@ -34,10 +34,10 @@
 
 <script>
 export default {
-  props: ['note'],
+  props: ['note', 'dateFormat'],
   computed: {
     formattedCreatedAtDate() {
-      return moment(this.note.created_at).format('DD MMM YYYY HH:mm');
+      return moment(this.note.created_at).format(this.dateFormat || 'DD MMM YYYY HH:mm');
     },
   },
 };

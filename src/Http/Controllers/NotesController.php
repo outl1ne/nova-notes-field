@@ -18,7 +18,10 @@ class NotesController extends Controller
         $model = $validationResult['model'];
         $notes = $model->notes()->orderBy('created_at', 'DESC')->orderBy('id', 'DESC')->get();
 
-        return response()->json($notes, 200);
+        return response()->json([
+            'date_format' => config('nova-notes-field.date_format'),
+            'notes' => $notes,
+        ], 200);
     }
 
     // POST /notes
