@@ -90,6 +90,8 @@ The available configuration option(s):
 | get_avatar_url | callable | Callable which allows you to generate your own URL for the user. The input parameter is the user model. By default, Gravatar is used for the user's avatars. |
 | table_name     | string   | Optionally provide your own table name for the notes table. Default is `nova_notes`.                                                                         |
 | notes_model    | string   | Optionally provide your own Note model.                                                                                                                      |
+| date_format    | string   | Optionally provide custom moment.js compatible date format.                                                                                                  |
+| use_trix_input | boolean  | Optionally enable Trix WYSIWYG input by setting this to `true`.                                                                                              |
 
 ## Localization
 
