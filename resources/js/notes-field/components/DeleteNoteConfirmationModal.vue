@@ -1,6 +1,6 @@
 <template>
   <modal @modal-close="handleClose">
-    <form @submit.prevent="handleConfirm" class="bg-white rounded-lg shadow-lg overflow-hidden" style="width: 460px">
+    <form @submit.prevent="handleConfirm" class="bg-white rounded-lg shadow-lg overflow-hidden" style="width: 460px;">
       <div class="p-8">
         <heading :level="2" class="mb-6">{{ __('novaNotesField.deleteNoteTitle') }}</heading>
         <p class="text-80 leading-normal">
