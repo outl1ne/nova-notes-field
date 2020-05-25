@@ -2,8 +2,9 @@
 
 namespace OptimistDigital\NovaNotesField\Models;
 
-use Illuminate\Database\Eloquent\Model;
+use Gate;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Database\Eloquent\Model;
 use OptimistDigital\NovaNotesField\FieldServiceProvider;
 
 class Note extends Model
@@ -42,6 +43,8 @@ class Note extends Model
 
     public function getCanDeleteAttribute()
     {
+        if (Gate::has('delete-nova-note')) return Gate::check('delete-nova-note', $this);
+
         $user = Auth::user();
         if (empty($user)) return false;
 
