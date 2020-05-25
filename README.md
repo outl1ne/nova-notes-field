@@ -105,10 +105,15 @@ In your `AuthServiceProvider.php` add a Gate definition like so:
 use Illuminate\Support\Facades\Gate;
 use OptimistDigital\NovaNotesField\Models\Note;
 
-Gate::define('delete-nova-note', function ($user, Note $note) {
-  // Do whatever here, ie:
-  return $note->created_by === $user->id || $user->isAdmin;
-});
+// ...
+
+public function boot()
+{
+  Gate::define('delete-nova-note', function ($user, Note $note) {
+    // Do whatever here, ie:
+    return $note->created_by === $user->id || $user->isAdmin;
+  });
+}
 ```
 
 ## Localization
