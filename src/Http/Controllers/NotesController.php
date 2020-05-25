@@ -55,7 +55,7 @@ class NotesController extends Controller
         $note = $model->notes()->where('id', $noteId)->first();
         if (empty($noteId)) return response('', 204);
 
-        if (empty($note->createdBy->id) || $note->createdBy->id !== Auth::user()->id) return response()->json(['error' => 'unauthorized'], 400);
+        if (!$note->canDelete) return response()->json(['error' => 'unauthorized'], 400);
 
         $model->deleteNote($noteId);
 
