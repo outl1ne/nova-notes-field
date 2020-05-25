@@ -93,6 +93,24 @@ The available configuration option(s):
 | date_format    | string   | Optionally provide custom moment.js compatible date format.                                                                                                  |
 | use_trix_input | boolean  | Optionally enable Trix WYSIWYG input by setting this to `true`.                                                                                              |
 
+## Custom delete authorization
+
+By default, only the user that wrote the note can delete it and noone can delete system notes.
+
+You can define which user(s) can delete which notes by defining a new Laravel authorization Gate called `delete-nova-note`.
+
+In your `AuthServiceProvider.php` add a Gate definition like so:
+
+```php
+use Illuminate\Support\Facades\Gate;
+use OptimistDigital\NovaNotesField\Models\Note;
+
+Gate::define('delete-nova-note', function ($user, Note $note) {
+  // Do whatever here, ie:
+  return $note->created_by === $user->id || $user->isAdmin;
+});
+```
+
 ## Localization
 
 The translation file(s) can be published by using the following publish command:
