@@ -25,7 +25,7 @@
       <button
         class="btn btn-default btn-primary inline-flex items-center relative ml-auto"
         @click="$emit('onSubmit')"
-        :disabled="loading"
+        :disabled="loading || !value"
       >
         {{ __('novaNotesField.addNote') }}
       </button>
