@@ -22,8 +22,10 @@
         class="btn btn-default btn-primary leading-tight ml-2 px-3 text-sm text-center cursor-pointer"
         style="height: 24px; line-height: 24px;"
         @click="maxToShow = void 0"
-        >{{ __('novaNotesField.showMoreNotes', { hiddenNoteCount: notes.length - maxToShow }) }}</span
       >
+        <!-- Cast to String to fix runtime crash in Nova 3.8.0 to 3.8.2 -->
+        {{ __('novaNotesField.showMoreNotes', { hiddenNoteCount: String(notes.length - maxToShow) }) }}
+      </span>
     </div>
 
     <delete-note-confirmation-modal
