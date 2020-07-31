@@ -94,8 +94,12 @@ export default {
     async createNote() {
       this.loading = true;
 
-      await Nova.request().post(`/nova-vendor/nova-notes/notes`, { note: this.note }, { params: this.params });
-      await this.fetchNotes();
+      try {
+        await Nova.request().post(`/nova-vendor/nova-notes/notes`, { note: this.note }, { params: this.params });
+        await this.fetchNotes();
+      } catch (e) {
+        Nova.error(this.__('There was a problem submitting the form.'));
+      }
 
       this.note = '';
 
@@ -104,8 +108,15 @@ export default {
     async deleteNote(note) {
       this.loading = true;
 
-      await Nova.request().delete(`/nova-vendor/nova-notes/notes`, { params: this.params, data: { noteId: note.id } });
-      await this.fetchNotes();
+      try {
+        await Nova.request().delete(`/nova-vendor/nova-notes/notes`, {
+          params: this.params,
+          data: { noteId: note.id },
+        });
+        await this.fetchNotes();
+      } catch (e) {
+        Nova.error('Unknown error when trying to delete the note.');
+      }
 
       this.showDeleteConfirmation = false;
       this.loading = false;
