@@ -26,7 +26,7 @@ class Note extends Model
 
     public function createdBy()
     {
-        $userClass = config('auth.providers.users.model');
+        $userClass = config('auth.providers.' . config('auth.guards.' . config('nova.guard') . '.provider') . '.model');
         return $this->belongsTo($userClass, 'created_by');
     }
 
