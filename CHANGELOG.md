@@ -9,7 +9,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-- Use Guard defined in Nova config to retrieve User class (thanks to [adriandmitroca](https://github.com/adriandmitroca))
+- Use Guard defined in Nova config to retrieve User class (thanks to [@adriandmitroca](https://github.com/adriandmitroca))
 
 ## [1.5.2] - 2020-09-02
 
