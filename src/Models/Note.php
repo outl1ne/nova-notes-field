@@ -29,7 +29,7 @@ class Note extends Model
         $provider = 'users';
         
         if(config('nova.guard')) {
-            $provider = config('auth.guards.' . config('nova.guard') . '.provider')
+            $provider = config('auth.guards.' . config('nova.guard') . '.provider');
         }
 
         $userClass = config('auth.providers.' . $provider . '.model');
