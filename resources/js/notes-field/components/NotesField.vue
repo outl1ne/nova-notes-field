@@ -5,6 +5,8 @@
       v-model.trim="note"
       @onSubmit="createNote"
       :loading="loading"
+      :inputWidth="field.inputWidth"
+      :showAddNote="field.showAddNote"
       :placeholder="field.placeholder || __('novaNotesField.defaultPlaceholder')"
       :trixEnabled="trixEnabled"
     />

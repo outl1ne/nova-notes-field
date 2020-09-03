@@ -1,5 +1,5 @@
 <template>
-  <div class="w-3/5 mb-4 flex">
+  <div v-if="showAddNote" class="mb-4 flex" :class="inputWidth">
     <div v-if="trixEnabled">
       <trix-editor
         ref="trixEditor"
@@ -9,6 +9,7 @@
         :value="value"
         :placeholder="placeholder"
         class="trix-content w-full form-control form-input form-input-bordered py-3 h-auto"
+
       />
     </div>
 
@@ -16,7 +17,7 @@
       v-else
       rows="3"
       :placeholder="placeholder"
-      class="w-full form-control form-input form-input-bordered py-3 h-auto"
+      class="form-control w-full form-input form-input-bordered py-3 h-auto"
       v-bind:value="value"
       v-on:input="$emit('input', $event.target.value)"
     />
@@ -35,7 +36,7 @@
 
 <script>
 export default {
-  props: ['placeholder', 'value', 'loading', 'trixEnabled'],
+  props: ['placeholder', 'value', 'loading', 'trixEnabled', 'inputWidth'],
 
   methods: {
     initialize() {
