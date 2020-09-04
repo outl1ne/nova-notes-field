@@ -9,6 +9,7 @@ This [Laravel Nova](https://nova.laravel.com) package adds a notes field to Nova
 - Ability to add notes through the UI or programmatically
 - Ability to delete user-made notes (w/ confirmation modal)
 - Customizable placeholder support
+- Set ability to add notes
 
 ## Screenshots
 
@@ -52,6 +53,7 @@ class SomeResource extends Resource
       // ...
       NotesField::make('Notes')
         ->placeholder('Add note'), // Optional
+        ->showAddNote(false), // Optional
     ]
   }
 }
@@ -92,6 +94,7 @@ The available configuration option(s):
 | notes_model    | string   | Optionally provide your own Note model.                                                                                                                      |
 | date_format    | string   | Optionally provide custom moment.js compatible date format.                                                                                                  |
 | use_trix_input | boolean  | Optionally enable Trix WYSIWYG input by setting this to `true`.                                                                                              |
+| use_full_width | boolean  | Optionally set the add note input to be displayed full width.                                                                                              |
 
 ## Custom delete authorization
 

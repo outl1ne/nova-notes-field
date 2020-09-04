@@ -11,7 +11,6 @@ class NotesField extends Field
     public $showOnIndex = false;
 
     public $showAddNote = true;
-    public $showNotes = true;
 
     /**
      * NovaNotesField constructor.
@@ -26,7 +25,6 @@ class NotesField extends Field
 
         $this->withMeta([
             'showAddNote' => $this->showAddNote,
-            'showNotes' => $this->showNotes
         ]);
     }
 
