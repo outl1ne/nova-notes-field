@@ -9,7 +9,7 @@ This [Laravel Nova](https://nova.laravel.com) package adds a notes field to Nova
 - Ability to add notes through the UI or programmatically
 - Ability to delete user-made notes (w/ confirmation modal)
 - Customizable placeholder support
-- Set ability to add notes
+- Set abilty to hide or show the add note input
 
 ## Screenshots
 
