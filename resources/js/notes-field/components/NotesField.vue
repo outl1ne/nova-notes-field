@@ -2,11 +2,11 @@
   <div :class="classes">
     <h3 class="text-90 mb-4">{{ field.name }}</h3>
     <note-input
+      v-if="field.addingNotesEnabled"
       v-model.trim="note"
       @onSubmit="createNote"
       :loading="loading"
       :fullWidth="field.fullWidth"
-      :showAddNote="field.showAddNote"
       :placeholder="field.placeholder || __('novaNotesField.defaultPlaceholder')"
       :trixEnabled="trixEnabled"
     />

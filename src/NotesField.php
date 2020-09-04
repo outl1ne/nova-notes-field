@@ -23,7 +23,7 @@ class NotesField extends Field
 
         $this->withMeta([
             'placeholder' => null,
-            'showAddNote' => true,
+            'addingNotesEnabled' => true,
             'fullWidth' => config('nova-notes-field.full_width_inputs', false),
         ]);
     }
@@ -42,12 +42,12 @@ class NotesField extends Field
     /**
      * Show or hide the AddNote input.
      *
-     * @param string $showAddNote
+     * @param string $addingNotesEnabled
      * @return NotesField
      **/
-    public function showAddNoteButton($showAddNote = true)
+    public function addingNotesEnabled($addingNotesEnabled = true)
     {
-        return $this->withMeta(['showAddNote' => $showAddNote]);
+        return $this->withMeta(['addingNotesEnabled' => $addingNotesEnabled]);
     }
 
     /**
