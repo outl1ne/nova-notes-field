@@ -5,6 +5,8 @@
       v-model.trim="note"
       @onSubmit="createNote"
       :loading="loading"
+      :fullWidth="fullWidth"
+      :showAddNote="field.showAddNote"
       :placeholder="field.placeholder || __('novaNotesField.defaultPlaceholder')"
       :trixEnabled="trixEnabled"
     />
@@ -53,6 +55,7 @@ export default {
     maxToShow: 5,
     dateFormat: 'DD MMM YYYY HH:mm',
     trixEnabled: false,
+    fullWidth: false,
   }),
   mounted() {
     this.fetchNotes();
@@ -83,11 +86,12 @@ export default {
       const { data } = await Nova.request().get(`/nova-vendor/nova-notes/notes`, {
         params: this.params,
       });
-      const { notes, date_format: dateFormat, trix_enabled: trixEnabled } = data;
+      const { notes, date_format: dateFormat, trix_enabled: trixEnabled, full_width: fullWidth } = data;
 
       if (Array.isArray(notes)) this.notes = notes;
       this.dateFormat = dateFormat;
       this.trixEnabled = trixEnabled;
+      this.fullWidth = fullWidth;
 
       this.loading = false;
     },
