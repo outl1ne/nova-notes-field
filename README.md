@@ -98,7 +98,7 @@ The available configuration option(s):
 
 ## Custom delete authorization
 
-By default, only the user that wrote the note can delete it and noone can delete system notes.
+By default, only the user that wrote the note can delete it and no one can delete system notes.
 
 You can define which user(s) can delete which notes by defining a new Laravel authorization Gate called `delete-nova-note`.
 
