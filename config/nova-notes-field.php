@@ -72,14 +72,14 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Fullwidth input
+    | Full-width inputs
     |--------------------------------------------------------------------------
     |
     | Set to 'true' if you wish to use the full width for the input.
     |
     */
 
-    'use_full_width' => false,
+    'full_width_inputs' => false,
 
 
 ];
