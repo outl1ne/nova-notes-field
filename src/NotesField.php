@@ -40,36 +40,15 @@ class NotesField extends Field
     }
 
     /**
-     * Sets the input size.
-     *
-     * @param string $inputWidth
-     * @return NotesField
-     **/
-    public function inputWidth($inputWidth)
-    {
-        return $this->withMeta(['inputWidth' => $inputWidth]);
-    }
-
-    /**
      * Show or hide the AddNote input.
      *
      * @param string $showAddNote
      * @return NotesField
      **/
-    public function showAddNote($showAddNote)
+    public function showAddNoteButton($showAddNote)
     {
         return $this->withMeta(['showAddNote' => $showAddNote]);
     }
 
-    /**
-     * Show or hide the notes section
-     *
-     * @param string $showNotes
-     * @return NotesField
-     **/
-    public function showNotes($showNotes)
-    {
-        return $this->withMeta(['showNotes' => $showNotes]);
-    }
 
 }
