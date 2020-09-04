@@ -330,7 +330,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['placeholder', 'value', 'loading', 'trixEnabled', 'inputWidth', 'showAddNote'],
+  props: ['placeholder', 'value', 'loading', 'trixEnabled', 'fullWidth', 'showAddNote'],
   methods: {
     initialize: function initialize() {
       this.$refs.trixEditor.editor.loadHTML(this.value);
@@ -426,7 +426,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       noteToDelete: void 0,
       maxToShow: 5,
       dateFormat: 'DD MMM YYYY HH:mm',
-      trixEnabled: false
+      trixEnabled: false,
+      fullWidth: false
     };
   },
   mounted: function mounted() {
@@ -456,7 +457,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
       var _this = this;
 
       return _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.mark(function _callee() {
-        var _yield$Nova$request$g, data, notes, dateFormat, trixEnabled;
+        var _yield$Nova$request$g, data, notes, dateFormat, trixEnabled, fullWidth;
 
         return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default.a.wrap(function _callee$(_context) {
           while (1) {
@@ -471,13 +472,14 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 3:
                 _yield$Nova$request$g = _context.sent;
                 data = _yield$Nova$request$g.data;
-                notes = data.notes, dateFormat = data.date_format, trixEnabled = data.trix_enabled;
+                notes = data.notes, dateFormat = data.date_format, trixEnabled = data.trix_enabled, fullWidth = data.full_width;
                 if (Array.isArray(notes)) _this.notes = notes;
                 _this.dateFormat = dateFormat;
                 _this.trixEnabled = trixEnabled;
+                _this.fullWidth = fullWidth;
                 _this.loading = false;
 
-              case 10:
+              case 11:
               case "end":
                 return _context.stop();
             }
@@ -29793,62 +29795,68 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _vm.showAddNote
-    ? _c("div", { staticClass: "mb-4 flex", class: _vm.inputWidth }, [
-        _vm.trixEnabled
-          ? _c(
-              "div",
-              [
-                _c("trix-editor", {
-                  ref: "trixEditor",
-                  staticClass:
-                    "trix-content w-full form-control form-input form-input-bordered py-3 h-auto",
-                  attrs: { value: _vm.value, placeholder: _vm.placeholder },
-                  on: {
-                    keydown: function($event) {
-                      $event.stopPropagation()
-                    },
-                    "trix-change": function($event) {
-                      return _vm.$emit("input", _vm.$refs.trixEditor.value)
-                    },
-                    "trix-initialize": _vm.initialize
-                  }
-                })
-              ],
-              1
-            )
-          : _c("textarea", {
-              staticClass:
-                "form-control w-full form-input form-input-bordered py-3 h-auto",
-              attrs: { rows: "3", placeholder: _vm.placeholder },
-              domProps: { value: _vm.value },
-              on: {
-                input: function($event) {
-                  return _vm.$emit("input", $event.target.value)
-                }
-              }
-            }),
-        _vm._v(" "),
-        _c("div", { staticClass: "whitespace-no-wrap ml-2" }, [
-          _c(
-            "button",
-            {
-              staticClass:
-                "btn btn-default btn-primary inline-flex items-center relative ml-auto",
-              attrs: { disabled: _vm.loading || !_vm.value },
-              on: {
-                click: function($event) {
-                  return _vm.$emit("onSubmit")
-                }
-              }
-            },
-            [
-              _vm._v(
-                "\n      " + _vm._s(_vm.__("novaNotesField.addNote")) + "\n    "
+    ? _c(
+        "div",
+        { staticClass: "mb-4 flex", class: _vm.fullWidth ? "w-full" : "w-3/5" },
+        [
+          _vm.trixEnabled
+            ? _c(
+                "div",
+                [
+                  _c("trix-editor", {
+                    ref: "trixEditor",
+                    staticClass:
+                      "trix-content w-full form-control form-input form-input-bordered py-3 h-auto",
+                    attrs: { value: _vm.value, placeholder: _vm.placeholder },
+                    on: {
+                      keydown: function($event) {
+                        $event.stopPropagation()
+                      },
+                      "trix-change": function($event) {
+                        return _vm.$emit("input", _vm.$refs.trixEditor.value)
+                      },
+                      "trix-initialize": _vm.initialize
+                    }
+                  })
+                ],
+                1
               )
-            ]
-          )
-        ])
-      ])
+            : _c("textarea", {
+                staticClass:
+                  "form-control w-full form-input form-input-bordered py-3 h-auto",
+                attrs: { rows: "3", placeholder: _vm.placeholder },
+                domProps: { value: _vm.value },
+                on: {
+                  input: function($event) {
+                    return _vm.$emit("input", $event.target.value)
+                  }
+                }
+              }),
+          _vm._v(" "),
+          _c("div", { staticClass: "whitespace-no-wrap ml-2" }, [
+            _c(
+              "button",
+              {
+                staticClass:
+                  "btn btn-default btn-primary inline-flex items-center relative ml-auto",
+                attrs: { disabled: _vm.loading || !_vm.value },
+                on: {
+                  click: function($event) {
+                    return _vm.$emit("onSubmit")
+                  }
+                }
+              },
+              [
+                _vm._v(
+                  "\n      " +
+                    _vm._s(_vm.__("novaNotesField.addNote")) +
+                    "\n    "
+                )
+              ]
+            )
+          ])
+        ]
+      )
     : _vm._e()
 }
 var staticRenderFns = []
@@ -29884,7 +29892,7 @@ var render = function() {
       _c("note-input", {
         attrs: {
           loading: _vm.loading,
-          inputWidth: _vm.field.inputWidth,
+          fullWidth: _vm.fullWidth,
           showAddNote: _vm.field.showAddNote,
           placeholder:
             _vm.field.placeholder ||

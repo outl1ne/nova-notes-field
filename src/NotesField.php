@@ -10,7 +10,6 @@ class NotesField extends Field
     public $showOnCreation = false;
     public $showOnIndex = false;
 
-    public $inputWidth = 'w-3/5';
     public $showAddNote = true;
     public $showNotes = true;
 
@@ -26,7 +25,6 @@ class NotesField extends Field
         parent::__construct($name, $attribute, $resolveCallback);
 
         $this->withMeta([
-            'inputWidth' => $this->inputWidth,
             'showAddNote' => $this->showAddNote,
             'showNotes' => $this->showNotes
         ]);
@@ -75,5 +73,5 @@ class NotesField extends Field
     {
         return $this->withMeta(['showNotes' => $showNotes]);
     }
-    
+
 }
