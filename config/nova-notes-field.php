@@ -80,6 +80,6 @@ return [
     */
 
     'use_full_width' => false,
-
+    
 
 ];
