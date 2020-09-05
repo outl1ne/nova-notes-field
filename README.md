@@ -96,7 +96,7 @@ The available configuration option(s):
 | date_format       | string   | Optionally provide custom moment.js compatible date format.                                                                                                  |
 | use_trix_input    | boolean  | Optionally enable Trix WYSIWYG input by setting this to `true`.                                                                                              |
 | full_width_inputs | boolean  | Optionally force all notes fields to display in full width.                                                                                                  |
-| display_order     | string   | Optionally set the sort order for notes. By default 'DESC' is used.                                                                                          |
+| display_order     | string   | Optionally set the sort order for notes. Default is `DESC`.                                                                                          |
 
 
 ## Custom delete authorization
