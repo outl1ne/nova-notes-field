@@ -1,5 +1,5 @@
 <template>
-  <div v-if="showAddNote" class="mb-4 flex" :class="inputWidth">
+  <div class="mb-4 flex" :class="fullWidth ? 'w-full' : 'w-3/5'">
     <div v-if="trixEnabled">
       <trix-editor
         ref="trixEditor"
@@ -36,8 +36,7 @@
 
 <script>
 export default {
-  props: ['placeholder', 'value', 'loading', 'trixEnabled', 'inputWidth'],
-
+  props: ['placeholder', 'value', 'loading', 'trixEnabled', 'fullWidth'],
   methods: {
     initialize() {
       this.$refs.trixEditor.editor.loadHTML(this.value);

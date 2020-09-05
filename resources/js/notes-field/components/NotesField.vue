@@ -2,17 +2,18 @@
   <div :class="classes">
     <h3 class="text-90 mb-4">{{ field.name }}</h3>
     <note-input
+      v-if="field.addingNotesEnabled"
       v-model.trim="note"
       @onSubmit="createNote"
       :loading="loading"
-      :inputWidth="field.inputWidth"
-      :showAddNote="field.showAddNote"
+      :fullWidth="field.fullWidth"
       :placeholder="field.placeholder || __('novaNotesField.defaultPlaceholder')"
       :trixEnabled="trixEnabled"
     />
 
     <note
       v-for="note in notesToShow"
+      :fullWidth="field.fullWidth"
       :note="note"
       :key="note.id"
       :date-format="dateFormat"
@@ -22,7 +23,7 @@
     <div class="flex justify-center mb-3 mt-3" v-if="hasMoreToShow">
       <span
         class="btn btn-default btn-primary leading-tight ml-2 px-3 text-sm text-center cursor-pointer"
-        style="height: 24px; line-height: 24px;"
+        style="height: 24px; line-height: 24px"
         @click="maxToShow = void 0"
       >
         <!-- Cast to String to fix runtime crash in Nova 3.8.0 to 3.8.2 -->
@@ -55,6 +56,7 @@ export default {
     maxToShow: 5,
     dateFormat: 'DD MMM YYYY HH:mm',
     trixEnabled: false,
+    fullWidth: false,
   }),
   mounted() {
     this.fetchNotes();
@@ -85,11 +87,12 @@ export default {
       const { data } = await Nova.request().get(`/nova-vendor/nova-notes/notes`, {
         params: this.params,
       });
-      const { notes, date_format: dateFormat, trix_enabled: trixEnabled } = data;
+      const { notes, date_format: dateFormat, trix_enabled: trixEnabled, full_width: fullWidth } = data;
 
       if (Array.isArray(notes)) this.notes = notes;
       this.dateFormat = dateFormat;
       this.trixEnabled = trixEnabled;
+      this.fullWidth = fullWidth;
 
       this.loading = false;
     },

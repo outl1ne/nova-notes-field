@@ -42,6 +42,24 @@ class NotesField extends Field
     }
 
     /**
+     * NovaNotesField constructor.
+     *
+     * @param $name
+     * @param null $attribute
+     * @param callable|null $resolveCallback
+     */
+    public function __construct($name, $attribute = null, callable $resolveCallback = null)
+    {
+        parent::__construct($name, $attribute, $resolveCallback);
+
+        $this->withMeta([
+            'placeholder' => null,
+            'addingNotesEnabled' => true,
+            'fullWidth' => config('nova-notes-field.full_width_inputs', false),
+        ]);
+    }
+
+    /**
      * Sets the placeholder value displayed on the field.
      *
      * @param string $placeholder
@@ -55,14 +73,23 @@ class NotesField extends Field
     /**
      * Show or hide the AddNote input.
      *
-     * @param string $showAddNote
+     * @param string $addingNotesEnabled
      * @return NotesField
      **/
-    public function showAddNote($showAddNote)
+    public function addingNotesEnabled($addingNotesEnabled = true)
     {
-        return $this->withMeta(['showAddNote' => $showAddNote]);
+        return $this->withMeta(['addingNotesEnabled' => $addingNotesEnabled]);
     }
 
-
+    /**
+     * Show or hide the AddNote input.
+     *
+     * @param boolean $fullWidth
+     * @return NotesField
+     **/
+    public function fullWidth($fullWidth = true)
+    {
+        return $this->withMeta(['fullWidth' => $fullWidth]);
+    }
 
 }

@@ -9,6 +9,7 @@ This [Laravel Nova](https://nova.laravel.com) package adds a notes field to Nova
 - Ability to add notes through the UI or programmatically
 - Ability to delete user-made notes (w/ confirmation modal)
 - Customizable placeholder support
+- Set ability to hide or show the 'Add Note' button
 
 ## Screenshots
 
@@ -52,6 +53,8 @@ class SomeResource extends Resource
       // ...
       NotesField::make('Notes')
         ->placeholder('Add note'), // Optional
+        ->addingNotesEnabled(false), // Optional
+        ->fullWidth(), // Optional
     ]
   }
 }
@@ -85,17 +88,18 @@ php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\FieldServi
 
 The available configuration option(s):
 
-| Config         | Type     | description                                                                                                                                                  |
-| -------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| get_avatar_url | callable | Callable which allows you to generate your own URL for the user. The input parameter is the user model. By default, Gravatar is used for the user's avatars. |
-| table_name     | string   | Optionally provide your own table name for the notes table. Default is `nova_notes`.                                                                         |
-| notes_model    | string   | Optionally provide your own Note model.                                                                                                                      |
-| date_format    | string   | Optionally provide custom moment.js compatible date format.                                                                                                  |
-| use_trix_input | boolean  | Optionally enable Trix WYSIWYG input by setting this to `true`.                                                                                              |
+| Config            | Type     | description                                                                                                                                                  |
+| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| get_avatar_url    | callable | Callable which allows you to generate your own URL for the user. The input parameter is the user model. By default, Gravatar is used for the user's avatars. |
+| table_name        | string   | Optionally provide your own table name for the notes table. Default is `nova_notes`.                                                                         |
+| notes_model       | string   | Optionally provide your own Note model.                                                                                                                      |
+| date_format       | string   | Optionally provide custom moment.js compatible date format.                                                                                                  |
+| use_trix_input    | boolean  | Optionally enable Trix WYSIWYG input by setting this to `true`.                                                                                              |
+| full_width_inputs | boolean  | Optionally force all notes fields to display in full width.                                                                                                  |
 
 ## Custom delete authorization
 
-By default, only the user that wrote the note can delete it and noone can delete system notes.
+By default, only the user that wrote the note can delete it and no one can delete system notes.
 
 You can define which user(s) can delete which notes by defining a new Laravel authorization Gate called `delete-nova-note`.
 
