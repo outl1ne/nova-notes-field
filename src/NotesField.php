@@ -6,40 +6,9 @@ use Laravel\Nova\Fields\Field;
 
 class NotesField extends Field
 {
-    public string   $component = 'nova-notes-field';
-    public bool     $showOnCreation = false;
-    public bool     $showOnIndex = false;
-
-    public string   $inputWidth = 'w-3/5';
-    public bool     $showAddNote = true;
-
-    /**
-     * NovaNotesField constructor.
-     *
-     * @param $name
-     * @param null $attribute
-     * @param callable|null $resolveCallback
-     */
-    public function __construct($name, $attribute = null, callable $resolveCallback = null)
-    {
-        parent::__construct($name, $attribute, $resolveCallback);
-
-        $this->withMeta([
-            'inputWidth' => $this->inputWidth,
-            'showAddNote' => $this->showAddNote
-        ]);
-    }
-
-    /**
-     * Sets the input size.
-     *
-     * @param string $inputWidth
-     * @return NotesField
-     **/
-    public function inputWidth($inputWidth)
-    {
-        return $this->withMeta(['inputWidth' => $inputWidth]);
-    }
+    public $component = 'nova-notes-field';
+    public $showOnCreation = false;
+    public $showOnIndex = false;
 
     /**
      * NovaNotesField constructor.
@@ -73,9 +42,9 @@ class NotesField extends Field
     /**
      * Show or hide the AddNote input.
      *
-     * @param string $addingNotesEnabled
+     * @param bool $addingNotesEnabled
      * @return NotesField
-     **/
+     */
     public function addingNotesEnabled($addingNotesEnabled = true)
     {
         return $this->withMeta(['addingNotesEnabled' => $addingNotesEnabled]);
@@ -91,5 +60,4 @@ class NotesField extends Field
     {
         return $this->withMeta(['fullWidth' => $fullWidth]);
     }
-
 }
