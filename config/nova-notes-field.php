@@ -68,4 +68,18 @@ return [
     */
 
     'use_trix_input' => false,
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Full-width inputs
+    |--------------------------------------------------------------------------
+    |
+    | Set to 'true' if you wish to use the full width for the input.
+    |
+    */
+
+    'full_width_inputs' => false,
+
+
 ];
