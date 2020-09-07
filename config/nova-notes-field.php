@@ -81,5 +81,15 @@ return [
 
     'full_width_inputs' => false,
 
+    /*
+    |--------------------------------------------------------------------------
+    | Display order
+    |--------------------------------------------------------------------------
+    |
+    | Set to the order used for displaying notes.
+    |
+    */
+
+    'display_order' => 'DESC',
 
 ];

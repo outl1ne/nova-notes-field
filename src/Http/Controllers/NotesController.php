@@ -16,7 +16,8 @@ class NotesController extends Controller
         if ($validationResult['has_errors'] === true) return response($validationResult['errors'], 400);
 
         $model = $validationResult['model'];
-        $notes = $model->notes()->orderBy('created_at', 'DESC')->orderBy('id', 'DESC')->get();
+        $displayOrder = config('nova-notes-field.display_order', 'DESC');
+        $notes = $model->notes()->orderBy('created_at', $displayOrder)->orderBy('id', $displayOrder)->get();
 
         return response()->json([
             'date_format' => config('nova-notes-field.date_format', 'DD MMM YYYY HH:mm'),

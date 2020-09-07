@@ -9,6 +9,7 @@
         :value="value"
         :placeholder="placeholder"
         class="trix-content w-full form-control form-input form-input-bordered py-3 h-auto"
+
       />
     </div>
 
@@ -36,7 +37,6 @@
 <script>
 export default {
   props: ['placeholder', 'value', 'loading', 'trixEnabled', 'fullWidth'],
-
   methods: {
     initialize() {
       this.$refs.trixEditor.editor.loadHTML(this.value);

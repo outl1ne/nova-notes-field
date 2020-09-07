@@ -42,9 +42,9 @@ class NotesField extends Field
     /**
      * Show or hide the AddNote input.
      *
-     * @param string $addingNotesEnabled
+     * @param bool $addingNotesEnabled
      * @return NotesField
-     **/
+     */
     public function addingNotesEnabled($addingNotesEnabled = true)
     {
         return $this->withMeta(['addingNotesEnabled' => $addingNotesEnabled]);
