@@ -52,8 +52,8 @@ class SomeResource extends Resource
     return [
       // ...
       NotesField::make('Notes')
-        ->placeholder('Add note'), // Optional
-        ->addingNotesEnabled(false), // Optional
+        ->placeholder('Add note') // Optional
+        ->addingNotesEnabled(false) // Optional
         ->fullWidth(), // Optional
     ]
   }
