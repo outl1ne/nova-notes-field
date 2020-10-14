@@ -36,9 +36,7 @@ return [
     | for the user's avatars.
     |
     | For example:
-    | function (User $user) {
-    |   return $user->getAvatarUrl();
-    | }
+    | 'get_avatar_url' => fn ($user) => $user->getAvatarUrl(),
     |
     */
 
