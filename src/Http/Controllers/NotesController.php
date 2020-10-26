@@ -54,7 +54,7 @@ class NotesController extends Controller
         if (empty($noteId)) return response()->json(['errors' => ['noteId' => 'required']], 400);
 
         $note = $model->notes()->where('id', $noteId)->first();
-        if (empty($noteId)) return response('', 204);
+        if (empty($note)) return response('', 204);
 
         if (!$note->canDelete) return response()->json(['error' => 'unauthorized'], 400);
 
