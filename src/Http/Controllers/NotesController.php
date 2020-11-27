@@ -2,10 +2,9 @@
 
 namespace OptimistDigital\NovaNotesField\Http\Controllers;
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Routing\Controller;
-use Illuminate\Http\Request;
 use Laravel\Nova\Nova;
+use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 
 class NotesController extends Controller
 {

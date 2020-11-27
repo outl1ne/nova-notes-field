@@ -15,7 +15,7 @@
       <!-- Title area -->
       <div class="mb-2">
         <span class="font-bold text-lg text-90">{{
-          note.created_by ? note.created_by.name : __('novaNotesField.systemUserName')
+          note.created_by_name ? note.created_by_name : __('novaNotesField.systemUserName')
         }}</span>
         <span class="text-xs text-80">
           {{ formattedCreatedAtDate }}{{ note.system ? ` [${__('novaNotesField.systemUserName')}]` : '' }}

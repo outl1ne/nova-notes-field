@@ -10,8 +10,10 @@ use OptimistDigital\NovaNotesField\FieldServiceProvider;
 class Note extends Model
 {
     protected $table = 'nova_notes';
+    protected $casts = ['system' => 'bool'];
     protected $fillable = ['model_id', 'model_type', 'text', 'created_by', 'system'];
-    protected $appends = ['created_by_avatar_url', 'can_delete'];
+    protected $hidden = ['createdBy', 'notable_type', 'notable_id'];
+    protected $appends = ['created_by_avatar_url', 'created_by_name', 'can_delete'];
 
     public function __construct(array $attributes = [])
     {
@@ -30,6 +32,16 @@ class Note extends Model
         if (config('nova.guard')) $provider = config('auth.guards.' . config('nova.guard') . '.provider');
         $userClass = config('auth.providers.' . $provider . '.model');
         return $this->belongsTo($userClass, 'created_by');
+    }
+
+    public function getCreatedByNameAttribute()
+    {
+        $user = $this->createdBy;
+
+        // Try different combinations
+        if (!empty($user->name)) return $user->name;
+        if (!empty($user->first_name)) return $user->first_name . (!empty($user->last_name) ? " {$user->last_name}" : '');
+        return __('User');
     }
 
     public function getCreatedByAvatarUrlAttribute()
