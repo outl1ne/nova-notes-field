@@ -11,6 +11,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Dropped PHP 7.1, Laravel 6 and Nova 2 support
 - Improved translations loading
+- Fixed whole model being submitted on Firefox when adding a note
+- Allow adding notes via "enter" key
 
 ## [1.5.8] - 2020-11-27
 
