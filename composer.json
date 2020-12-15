@@ -33,7 +33,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "OptimistDigital\\NovaNotesField\\FieldServiceProvider"
+        "OptimistDigital\\NovaNotesField\\NotesFieldServiceProvider"
       ]
     }
   },
