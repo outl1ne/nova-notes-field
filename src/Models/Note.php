@@ -5,7 +5,7 @@ namespace OptimistDigital\NovaNotesField\Models;
 use Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
-use OptimistDigital\NovaNotesField\FieldServiceProvider;
+use OptimistDigital\NovaNotesField\NotesFieldServiceProvider;
 
 class Note extends Model
 {
@@ -18,7 +18,7 @@ class Note extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->setTable(FieldServiceProvider::getTableName());
+        $this->setTable(NotesFieldServiceProvider::getTableName());
     }
 
     public function notable()

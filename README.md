@@ -83,7 +83,7 @@ public function addNote($note, $user = true, $system = true)
 You can publish the configuration by running:
 
 ```bash
-php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\FieldServiceProvider" --tag="config"
+php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\NotesFieldServiceProvider" --tag="config"
 ```
 
 The available configuration option(s):
@@ -96,8 +96,7 @@ The available configuration option(s):
 | date_format       | string   | Optionally provide custom moment.js compatible date format.                                                                                                  |
 | use_trix_input    | boolean  | Optionally enable Trix WYSIWYG input by setting this to `true`.                                                                                              |
 | full_width_inputs | boolean  | Optionally force all notes fields to display in full width.                                                                                                  |
-| display_order     | string   | Optionally set the sort order for notes. Default is `DESC`.                                                                                          |
-
+| display_order     | string   | Optionally set the sort order for notes. Default is `DESC`.                                                                                                  |
 
 ## Custom delete authorization
 
@@ -127,7 +126,7 @@ public function boot()
 The translation file(s) can be published by using the following publish command:
 
 ```bash
-php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\FieldServiceProvider" --tag="translations"
+php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\NotesFieldServiceProvider" --tag="translations"
 ```
 
 You can add your translations to `resources/lang/vendor/nova-notes-field/` by creating a new translations file with the locale name (ie `se.json`) and copying the JSON from the existing `en.json`.
@@ -137,7 +136,7 @@ You can add your translations to `resources/lang/vendor/nova-notes-field/` by cr
 If you want to edit the migration(s), you can publish the migrations like so:
 
 ```bash
-php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\FieldServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\NotesFieldServiceProvider" --tag="migrations"
 ```
 
 ## Credits

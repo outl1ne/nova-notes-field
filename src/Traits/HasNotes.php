@@ -3,7 +3,7 @@
 namespace OptimistDigital\NovaNotesField\Traits;
 
 use Illuminate\Support\Facades\Auth;
-use OptimistDigital\NovaNotesField\FieldServiceProvider;
+use OptimistDigital\NovaNotesField\NotesFieldServiceProvider;
 
 trait HasNotes
 {
@@ -38,6 +38,6 @@ trait HasNotes
 
     public function notes()
     {
-        return $this->morphMany(FieldServiceProvider::getNotesModel(), 'notable');
+        return $this->morphMany(NotesFieldServiceProvider::getNotesModel(), 'notable');
     }
 }
