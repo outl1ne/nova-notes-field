@@ -30,7 +30,7 @@
       </div>
 
       <!-- Content -->
-      <p v-html="note.text"></p>
+      <p v-html="note.text" class="whitespace-pre-wrap"></p>
     </div>
   </div>
 </template>
