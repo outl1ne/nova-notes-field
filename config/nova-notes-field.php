@@ -25,23 +25,25 @@ return [
 
     'notes_model' => \OptimistDigital\NovaNotesField\Models\Note::class,
 
-
     /*
     |--------------------------------------------------------------------------
     | Avatar URL
     |--------------------------------------------------------------------------
     |
-    | Callable which allows you to generate your own URL for the user. The
-    | input parameter is the user model. By default, Gravatar is used
-    | for the user's avatars.
+    | Return the model attribute that accesses the avatar url.
     |
-    | For example:
-    | 'get_avatar_url' => fn ($user) => $user->getAvatarUrl(),
+    | For example
+    | 'get_avatar_url' => 'avatar_url',
+    |
+    | This assumes that you have the following on your User model:
+    | public function getAvatarUrlAttribute(): string
+    | {
+    |   //Code to return the correct avatar url
+    | }
     |
     */
 
     'get_avatar_url' => null,
-
 
     /*
     |--------------------------------------------------------------------------

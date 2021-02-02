@@ -49,8 +49,11 @@ class Note extends Model
         $createdBy = $this->createdBy;
         if (empty($createdBy)) return null;
 
-        $avatarCallable = config('nova-notes-field.get_avatar_url', null);
-        if (is_callable($avatarCallable)) return call_user_func($avatarCallable, $createdBy);
+        $avatarUrl = config('nova-notes-field.get_avatar_url', null);
+        if ($avatarUrl) {
+            if (is_callable($avatarUrl)) return call_user_func($avatarUrl, $createdBy);
+            return $createdBy->$avatarUrl;
+        }
 
         return 'https://www.gravatar.com/avatar/' . md5(strtolower($createdBy->email)) . '?s=300';
     }
