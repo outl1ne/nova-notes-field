@@ -49,13 +49,13 @@ class Note extends Model
         $createdBy = $this->createdBy;
         if (empty($createdBy)) return null;
 
-        $avatarUrl = config('nova-notes-field.get_avatar_url', null);
-        if ($avatarUrl) {
-            if (is_callable($avatarUrl)) return call_user_func($avatarUrl, $createdBy);
-            return $createdBy->$avatarUrl;
+        $avatarCallableOrFnName = config('nova-notes-field.get_avatar_url', null);
+        if ($avatarCallableOrFnName) {
+            if (is_callable($avatarCallableOrFnName)) return call_user_func($avatarCallableOrFnName, $createdBy);
+            return $createdBy->$avatarCallableOrFnName ?? null;
         }
 
-        return 'https://www.gravatar.com/avatar/' . md5(strtolower($createdBy->email)) . '?s=300';
+        return !empty($createdBy->email) ? 'https://www.gravatar.com/avatar/' . md5(strtolower($createdBy->email)) . '?s=300' : null;
     }
 
     public function getCanDeleteAttribute()

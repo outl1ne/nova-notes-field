@@ -30,16 +30,15 @@ return [
     | Avatar URL
     |--------------------------------------------------------------------------
     |
-    | Return the model attribute that accesses the avatar url.
+    | Callable or the model attribute that accesses the avatar URL.
     |
-    | For example
-    | 'get_avatar_url' => 'avatar_url',
+    | For example:
+    | 'get_avatar_url' => fn($user) => $user->getAvatarUrl();
+    | // or
+    | 'get_avatar_url' => 'avatarUrl'
     |
     | This assumes that you have the following on your User model:
-    | public function getAvatarUrlAttribute(): string
-    | {
-    |   //Code to return the correct avatar url
-    | }
+    | public function getAvatarUrlAttribute() {}
     |
     */
 
