@@ -76,7 +76,13 @@ class NotesController extends Controller
             if (empty($resourceClass)) $errors['resourceName'] = 'invalid_name';
             else {
                 $modelClass = $resourceClass::$model;
-                $model = $modelClass::find($resourceId);
+
+                if (method_exists($modelClass, 'trashed')) {
+                    $model = $modelClass::withTrashed()->find($resourceId);
+                } else {
+                    $model = $modelClass::find($resourceId);
+                }
+
                 if (empty($model)) $errors['resourceId'] = 'not_found';
             }
         }
