@@ -43,7 +43,8 @@ export default {
   props: ['note', 'dateFormat', 'fullWidth'],
   computed: {
     formattedCreatedAtDate() {
-      return moment(this.note.created_at).format(this.dateFormat || 'DD MMM YYYY HH:mm');
+      return '22 April 2022';
+      // return moment(this.note.created_at).format(this.dateFormat || 'DD MMM YYYY HH:mm');
     },
   },
 };
