@@ -1,6 +1,6 @@
 <?php
 
-namespace OptimistDigital\NovaNotesField;
+namespace Outl1ne\NovaNotesField;
 
 use Laravel\Nova\Fields\Field;
 

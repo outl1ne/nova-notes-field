@@ -1,11 +1,11 @@
 <?php
 
-namespace OptimistDigital\NovaNotesField\Models;
+namespace Outl1ne\NovaNotesField\Models;
 
 use Gate;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Database\Eloquent\Model;
-use OptimistDigital\NovaNotesField\NotesFieldServiceProvider;
+use Outl1ne\NovaNotesField\NotesFieldServiceProvider;
 
 class Note extends Model
 {

@@ -1,5 +1,5 @@
 <template>
-  <notes-field
+  <NotesField
     :field="field"
     :resourceName="resourceName"
     :resourceId="resourceId"
@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import NotesField from './components/NotesField';
+import NotesField from '../components/NotesField';
 
 export default {
   components: { NotesField },

@@ -1,12 +1,12 @@
 <?php
 
-namespace OptimistDigital\NovaNotesField;
+namespace Outl1ne\NovaNotesField;
 
 use Laravel\Nova\Nova;
 use Laravel\Nova\Events\ServingNova;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\ServiceProvider;
-use OptimistDigital\NovaTranslationsLoader\LoadsNovaTranslations;
+use Outl1ne\NovaTranslationsLoader\LoadsNovaTranslations;
 
 class NotesFieldServiceProvider extends ServiceProvider
 {
@@ -47,7 +47,7 @@ class NotesFieldServiceProvider extends ServiceProvider
 
         Route::middleware(['nova'])
             ->prefix('nova-vendor/nova-notes')
-            ->namespace('\OptimistDigital\NovaNotesField\Http\Controllers')
+            ->namespace('\Outl1ne\NovaNotesField\Http\Controllers')
             ->group(__DIR__ . '/../routes/api.php');
     }
 
@@ -58,6 +58,6 @@ class NotesFieldServiceProvider extends ServiceProvider
 
     public static function getNotesModel()
     {
-        return config('nova-notes-field.notes_model', \OptimistDigital\NovaNotesField\Models\Note::class);
+        return config('nova-notes-field.notes_model', \Outl1ne\NovaNotesField\Models\Note::class);
     }
 }

@@ -23,7 +23,7 @@ return [
     |
     */
 
-    'notes_model' => \OptimistDigital\NovaNotesField\Models\Note::class,
+    'notes_model' => \Outl1ne\NovaNotesField\Models\Note::class,
 
     /*
     |--------------------------------------------------------------------------

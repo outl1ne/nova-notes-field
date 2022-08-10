@@ -1,6 +1,14 @@
 # Nova Notes Field
 
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/outl1ne/nova-notes-field.svg?style=flat-square)](https://packagist.org/packages/outl1ne/nova-notes-field)
+[![Total Downloads](https://img.shields.io/packagist/dt/outl1ne/nova-notes-field.svg?style=flat-square)](https://packagist.org/packages/outl1ne/nova-notes-field)
+
 This [Laravel Nova](https://nova.laravel.com) package adds a notes field to Nova's arsenal of fields.
+
+## Requirements
+
+- `php: >=8.0`
+- `laravel/nova: ^4.0`
 
 ## Features
 
@@ -19,7 +27,7 @@ This [Laravel Nova](https://nova.laravel.com) package adds a notes field to Nova
 
 ```bash
 # Install the package via Composer
-composer require optimistdigital/nova-notes-field
+composer require outl1ne/nova-notes-field
 
 # Run automatically loaded migration(s)
 php artisan migrate
@@ -30,7 +38,7 @@ php artisan migrate
 Add `HasNotes` trait to the model that has the notes:
 
 ```php
-use OptimistDigital\NovaNotesField\Traits\HasNotes;
+use Outl1ne\NovaNotesField\Traits\HasNotes;
 
 class ExampleModel extends Model
 {
@@ -41,7 +49,7 @@ class ExampleModel extends Model
 Add `NotesField` to the matching resource:
 
 ```php
-use OptimistDigital\NovaNotesField\NotesField;
+use Outl1ne\NovaNotesField\NotesField;
 
 class SomeResource extends Resource
 {
@@ -71,7 +79,7 @@ To add notes programmatically, use the method provided by the `HasNotes` trait:
  * @param string $note The note text which can contain raw HTML.
  * @param bool $user Enables or disables the use of `Auth::user()` to set as the creator.
  * @param bool $system Defines whether the note is system created and can be deleted or not.
- * @return \OptimistDigital\NovaNotesField\Models\Note
+ * @return \Outl1ne\NovaNotesField\Models\Note
  **/
 public function addNote($note, $user = true, $system = true)
 ```
@@ -83,7 +91,7 @@ public function addNote($note, $user = true, $system = true)
 You can publish the configuration by running:
 
 ```bash
-php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\NotesFieldServiceProvider" --tag="config"
+php artisan vendor:publish --provider="Outl1ne\NovaNotesField\NotesFieldServiceProvider" --tag="config"
 ```
 
 The available configuration option(s):
@@ -108,7 +116,7 @@ In your `AuthServiceProvider.php` add a Gate definition like so:
 
 ```php
 use Illuminate\Support\Facades\Gate;
-use OptimistDigital\NovaNotesField\Models\Note;
+use Outl1ne\NovaNotesField\Models\Note;
 
 // ...
 
@@ -126,7 +134,7 @@ public function boot()
 The translation file(s) can be published by using the following publish command:
 
 ```bash
-php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\NotesFieldServiceProvider" --tag="translations"
+php artisan vendor:publish --provider="Outl1ne\NovaNotesField\NotesFieldServiceProvider" --tag="translations"
 ```
 
 You can add your translations to `resources/lang/vendor/nova-notes-field/` by creating a new translations file with the locale name (ie `se.json`) and copying the JSON from the existing `en.json`.
@@ -136,7 +144,7 @@ You can add your translations to `resources/lang/vendor/nova-notes-field/` by cr
 If you want to edit the migration(s), you can publish the migrations like so:
 
 ```bash
-php artisan vendor:publish --provider="OptimistDigital\NovaNotesField\NotesFieldServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="Outl1ne\NovaNotesField\NotesFieldServiceProvider" --tag="migrations"
 ```
 
 ## Credits

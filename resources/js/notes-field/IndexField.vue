@@ -1,7 +1,5 @@
 <template>
-  <div>
-    Index Field
-  </div>
+  <div>Index Field</div>
 </template>
 
 <script>

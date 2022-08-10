@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
-use OptimistDigital\NovaNotesField\NotesFieldServiceProvider;
+use Outl1ne\NovaNotesField\NotesFieldServiceProvider;
 
 class CreateNovaNotesTable extends Migration
 {

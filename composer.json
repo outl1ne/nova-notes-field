@@ -1,10 +1,10 @@
 {
-  "name": "optimistdigital/nova-notes-field",
+  "name": "outl1ne/nova-notes-field",
   "description": "This Laravel Nova package adds a notes field to Nova's arsenal of fields.",
   "keywords": [
     "laravel",
     "nova",
-    "optimistdigital",
+    "outl1ne",
     "field"
   ],
   "authors": [
@@ -14,26 +14,26 @@
       "role": "Developer"
     },
     {
-      "name": "Optimist Digital",
-      "email": "info@optimistdigital.com",
+      "name": "outl1ne",
+      "email": "info@outl1ne.com",
       "role": "Maintainer"
     }
   ],
   "license": "MIT",
   "require": {
-    "php": ">=7.2.0",
-    "laravel/nova": "^3.0",
-    "optimistdigital/nova-translations-loader": "^3.0"
+    "php": ">=8.0",
+    "laravel/nova": "^4.0",
+    "outl1ne/nova-translations-loader": "^5.0"
   },
   "autoload": {
     "psr-4": {
-      "OptimistDigital\\NovaNotesField\\": "src/"
+      "Outl1ne\\NovaNotesField\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "OptimistDigital\\NovaNotesField\\NotesFieldServiceProvider"
+        "Outl1ne\\NovaNotesField\\NotesFieldServiceProvider"
       ]
     }
   },
@@ -41,5 +41,11 @@
     "sort-packages": true
   },
   "minimum-stability": "dev",
-  "prefer-stable": true
+  "prefer-stable": true,
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://nova.laravel.com"
+    }
+  ]
 }

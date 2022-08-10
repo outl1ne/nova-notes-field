@@ -1,6 +1,6 @@
 <?php
 
-namespace OptimistDigital\NovaNotesField\Http\Controllers;
+namespace Outl1ne\NovaNotesField\Http\Controllers;
 
 use Laravel\Nova\Nova;
 use Illuminate\Http\Request;
