@@ -96,15 +96,14 @@ php artisan vendor:publish --provider="Outl1ne\NovaNotesField\NotesFieldServiceP
 
 The available configuration option(s):
 
-| Config            | Type     | description                                                                                                                                                  |
-| ----------------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| Config            | Type               | description                                                                                                                                                                                                         |
+| ----------------- | ------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | get_avatar_url    | callable or string | Either enter the url attribute name on your model or a callable which allows you to generate your own URL for the user. The input parameter is the user model. By default, Gravatar is used for the user's avatars. |
-| table_name        | string   | Optionally provide your own table name for the notes table. Default is `nova_notes`.                                                                         |
-| notes_model       | string   | Optionally provide your own Note model.                                                                                                                      |
-| date_format       | string   | Optionally provide custom moment.js compatible date format.                                                                                                  |
-| use_trix_input    | boolean  | Optionally enable Trix WYSIWYG input by setting this to `true`.                                                                                              |
-| full_width_inputs | boolean  | Optionally force all notes fields to display in full width.                                                                                                  |
-| display_order     | string   | Optionally set the sort order for notes. Default is `DESC`.                                                                                                  |
+| table_name        | string             | Optionally provide your own table name for the notes table. Default is `nova_notes`.                                                                                                                                |
+| notes_model       | string             | Optionally provide your own Note model.                                                                                                                                                                             |
+| use_trix_input    | boolean            | Optionally enable Trix WYSIWYG input by setting this to `true`.                                                                                                                                                     |
+| full_width_inputs | boolean            | Optionally force all notes fields to display in full width.                                                                                                                                                         |
+| display_order     | string             | Optionally set the sort order for notes. Default is `DESC`.                                                                                                                                                         |
 
 ## Custom delete authorization
 

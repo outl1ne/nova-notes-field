@@ -49,11 +49,11 @@ return [
     | Date format
     |--------------------------------------------------------------------------
     |
-    | Set custom Moment JS date format.
+    | Set custom date-fns compatible date format.
     |
     */
 
-    'date_format' => 'DD MMM YYYY HH:mm',
+    'date_format' => 'dd MMM yyyy HH:mm',
 
 
     /*
@@ -63,6 +63,8 @@ return [
     |
     | Set to 'true' if you wish to use the Trix WYSIWYG input instead
     | of the default textarea.
+    |
+    | Currently out of order due to Nova 4 upgrade.
     |
     */
 

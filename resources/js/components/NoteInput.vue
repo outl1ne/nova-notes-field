@@ -1,12 +1,12 @@
 <template>
   <div class="mb-4 flex" :class="fullWidth ? 'w-full' : 'w-3/5'">
     <div v-if="trixEnabled">
-      <trix-editor
+      <TrixEditor
         ref="trixEditor"
         @keydown.stop
-        @trix-change="$emit('input', $refs.trixEditor.value)"
+        @trix-change="$emit('update:modelValue', $refs.trixEditor.value)"
         @trix-initialize="initialize"
-        :value="value"
+        :value="modelValue"
         :placeholder="placeholder"
         class="trix-content w-full form-control form-input form-input-bordered py-3 h-auto"
       />
@@ -17,30 +17,30 @@
       rows="3"
       :placeholder="placeholder"
       class="form-control w-full form-input form-input-bordered py-3 h-auto"
-      v-bind:value="value"
-      v-on:input="$emit('input', $event.target.value)"
-      v-on:keydown.enter="onEnter"
+      :value="modelValue"
+      @input="$emit('update:modelValue', $event.target.value)"
+      @keydown.enter="onEnter"
     />
 
     <div class="whitespace-no-wrap ml-2">
-      <button
-        class="btn btn-default btn-primary inline-flex items-center relative ml-auto"
+      <DefaultButton
+        class="o1-inline-flex o1-items-center o1-relative o1-ml-auto o1-whitespace-nowrap"
         @click="$emit('onSubmit')"
         type="button"
-        :disabled="loading || !value"
+        :disabled="loading || !modelValue"
       >
         {{ __('novaNotesField.addNote') }}
-      </button>
+      </DefaultButton>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  props: ['placeholder', 'value', 'loading', 'trixEnabled', 'fullWidth'],
+  props: ['placeholder', 'modelValue', 'loading', 'trixEnabled', 'fullWidth'],
   methods: {
     initialize() {
-      this.$refs.trixEditor.editor.loadHTML(this.value);
+      this.$refs.trixEditor.editor.loadHTML(this.modelValue);
     },
 
     onEnter(e) {
@@ -54,7 +54,7 @@ export default {
   },
 
   watch: {
-    value(newValue, oldValue) {
+    modelValue(newValue, oldValue) {
       if (this.trixEnabled && this.$refs.trixEditor) {
         if (!newValue && !!oldValue) this.$refs.trixEditor.editor.loadHTML('');
       }

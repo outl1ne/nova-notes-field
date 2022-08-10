@@ -19,7 +19,7 @@ class NotesController extends Controller
         $notes = $model->notes()->orderBy('created_at', $displayOrder)->orderBy('id', $displayOrder)->get();
 
         return response()->json([
-            'date_format' => config('nova-notes-field.date_format', 'DD MMM YYYY HH:mm'),
+            'date_format' => config('nova-notes-field.date_format', 'dd MMM yyyy HH:mm'),
             'trix_enabled' => config('nova-notes-field.use_trix_input', false),
             'notes' => $notes,
         ], 200);

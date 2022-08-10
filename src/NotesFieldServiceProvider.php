@@ -28,11 +28,17 @@ class NotesFieldServiceProvider extends ServiceProvider
         ], 'config');
 
         // Load translations
-        $this->loadTranslations(__DIR__ . '/../resources/lang', 'nova-notes-field', true);
+        $this->loadTranslations(__DIR__ . '/../lang', 'nova-notes-field', true);
+
+        $this->mergeConfigFrom(
+            __DIR__ . '/../config/nova-notes-field.php',
+            'nova-notes-field'
+        );
 
         // Serve assets
         Nova::serving(function (ServingNova $event) {
-            Nova::script('nova-notes-field', __DIR__ . '/../dist/js/field.js');
+            Nova::script('nova-notes-field', __DIR__ . '/../dist/js/entry.js');
+            Nova::style('nova-notes-field', __DIR__ . '/../dist/css/entry.css');
         });
 
         // Load routes

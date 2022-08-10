@@ -1,31 +1,41 @@
 <template>
   <div
-    class="w-3/5 bg-white rounded border border-40 px-2 py-2 flex mb-2 mt-2"
+    class="o1-w-3/5 o1-bg-white o1-rounded-md o1-border o1-border-gray-200 o1-px-2 o1-py-2 o1-flex o1-mb-2 o1-mt-2"
     :class="{ 'w-full': fullWidth, 'w-3/5': !fullWidth }"
   >
-    <div class="rounded-full w-12 h-12 mr-3 overflow-hidden text-center" style="flex-shrink: 0">
+    <div class="o1-rounded-lg o1-w-12 o1-h-12 o1-mr-3 o1-overflow-hidden o1-text-center" style="flex-shrink: 0">
       <!-- Image -->
-      <div v-if="note.system" class="w-12 h-12 text-sm font-bold bg-60 text-40" style="line-height: 3rem">
+      <div
+        v-if="note.system"
+        class="o1-w-12 o1-h-12 o1-text-sm o1-font-bold o1-bg-gray-50 o1-text-gray-700"
+        style="line-height: 3rem"
+      >
         {{ __('novaNotesField.systemUserAbbreviation') }}
       </div>
-      <img class="w-12 h-12" v-else-if="note.created_by_avatar_url" :src="note.created_by_avatar_url" alt="" />
-      <div v-else class="w-12 h-12 text-sm font-bold bg-60 text-40" style="line-height: 3rem">
+      <img class="o1-w-12 o1-h-12" v-else-if="note.created_by_avatar_url" :src="note.created_by_avatar_url" alt="" />
+      <div
+        v-else
+        class="o1-w-12 o1-h-12 o1-text-sm o1-font-bold o1-bg-gray-50 o1-text-gray-700"
+        style="line-height: 3rem"
+      >
         {{ !!note.created_by_name ? (note.created_by_name || '').substr(0, 3).toUpperCase() : '??' }}
       </div>
     </div>
 
     <div>
       <!-- Title area -->
-      <div class="mb-2">
-        <span class="font-bold text-lg text-90">{{
-          note.created_by_name ? note.created_by_name : __('novaNotesField.systemUserName')
-        }}</span>
-        <span class="text-xs text-80">
+      <div class="o1-mb-2">
+        <span class="o1-font-bold o1-text-base o1-text-gray-700 o1-mr-2">
+          {{ note.created_by_name ? note.created_by_name : __('novaNotesField.systemUserName') }}
+        </span>
+
+        <span class="o1-text-xs o1-text-gray-700 o1-mr-2">
           {{ formattedCreatedAtDate }}{{ note.system ? ` [${__('novaNotesField.systemUserName')}]` : '' }}
         </span>
+
         <span
           v-if="!note.system && note.can_delete"
-          class="text-xs text-error hover:underline cursor-pointer"
+          class="o1-text-xs hover:o1-underline o1-cursor-pointer"
           style="color: #e74c3c"
           @click="$emit('onDeleteRequested', note)"
           >[{{ __('novaNotesField.delete') }}]</span
@@ -33,17 +43,19 @@
       </div>
 
       <!-- Content -->
-      <p v-html="note.text" class="whitespace-pre-wrap"></p>
+      <p v-html="note.text" class="o1-whitespace-pre-wrap o1-text-gray-800"></p>
     </div>
   </div>
 </template>
 
 <script>
+import { format } from 'date-fns';
+
 export default {
   props: ['note', 'dateFormat', 'fullWidth'],
   computed: {
     formattedCreatedAtDate() {
-      return moment(this.note.created_at).format(this.dateFormat || 'DD MMM YYYY HH:mm');
+      return format(new Date(this.note.created_at), this.dateFormat);
     },
   },
 };

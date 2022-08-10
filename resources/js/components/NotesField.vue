@@ -1,7 +1,7 @@
 <template>
   <div :class="classes">
-    <h3 class="text-90 mb-4">{{ field.name }}</h3>
-    <note-input
+    <h3 class="o1-text-gray-600 o1-mb-4">{{ field.name }}</h3>
+    <NoteInput
       v-if="field.addingNotesEnabled"
       v-model.trim="note"
       @onSubmit="createNote"
@@ -11,7 +11,7 @@
       :trixEnabled="trixEnabled"
     />
 
-    <note
+    <Note
       v-for="note in notesToShow"
       :fullWidth="field.fullWidth"
       :note="note"
@@ -20,19 +20,15 @@
       @onDeleteRequested="onNoteDeleteRequested"
     />
 
-    <div class="flex justify-center mb-3 mt-3" v-if="hasMoreToShow">
-      <span
-        class="btn btn-default btn-primary leading-tight ml-2 px-3 text-sm text-center cursor-pointer"
-        style="height: 24px; line-height: 24px"
-        @click="maxToShow = void 0"
-      >
+    <div class="o1-flex o1-justify-center o1-mb-3 o1-mt-3" v-if="hasMoreToShow">
+      <DefaultButton style="height: 24px; line-height: 24px" @click="maxToShow = void 0">
         <!-- Cast to String to fix runtime crash in Nova 3.8.0 to 3.8.2 -->
         {{ __('novaNotesField.showMoreNotes', { hiddenNoteCount: String(notes.length - maxToShow) }) }}
-      </span>
+      </DefaultButton>
     </div>
 
-    <delete-note-confirmation-modal
-      v-if="showDeleteConfirmation"
+    <DeleteNoteConfirmationModal
+      :show="showDeleteConfirmation"
       @close="showDeleteConfirmation = false"
       @confirm="deleteNote(noteToDelete)"
     />
@@ -54,7 +50,7 @@ export default {
     showDeleteConfirmation: false,
     noteToDelete: void 0,
     maxToShow: 5,
-    dateFormat: 'DD MMM YYYY HH:mm',
+    dateFormat: 'dd MMM yyyy HH:mm',
     trixEnabled: false,
     fullWidth: false,
   }),
@@ -76,7 +72,8 @@ export default {
       return this.maxToShow && this.notes.length > this.maxToShow;
     },
     classes() {
-      const defaultClasses = 'notes-field bg-20 px-4 pt-4 pb-2 rounded-b-lg overflow-hidden border-b border-40';
+      const defaultClasses =
+        'notes-field o1-bg-slate-100 o1-px-4 o1-pt-4 o1-pb-2 o1-rounded-b-lg o1-overflow-hidden o1-border-b o1-border-gray-200';
       return defaultClasses + (this.extraClass ? ` ${this.extraClass}` : '');
     },
   },
