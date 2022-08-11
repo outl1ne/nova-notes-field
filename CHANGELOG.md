@@ -14,6 +14,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Renamed namespace from OptimistDigital to Outl1ne
 - Dropped Nova 3 support
 - Dropped PHP 7 support
 - Updated packages
