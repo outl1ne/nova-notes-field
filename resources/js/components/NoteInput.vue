@@ -1,11 +1,10 @@
 <template>
   <div class="mb-4 flex" :class="fullWidth ? 'w-full' : 'w-3/5'">
     <div v-if="trixEnabled">
-      <TrixEditor
+      <Trix
         ref="trixEditor"
         @keydown.stop
-        @trix-change="$emit('update:modelValue', $refs.trixEditor.value)"
-        @trix-initialize="initialize"
+        @change="val => $emit('update:modelValue', val)"
         :value="modelValue"
         :placeholder="placeholder"
         class="trix-content w-full form-control form-input form-input-bordered py-3 h-auto"
@@ -39,10 +38,6 @@
 export default {
   props: ['placeholder', 'modelValue', 'loading', 'trixEnabled', 'fullWidth'],
   methods: {
-    initialize() {
-      this.$refs.trixEditor.editor.loadHTML(this.modelValue);
-    },
-
     onEnter(e) {
       if (e.shiftKey) return true;
 
@@ -56,7 +51,7 @@ export default {
   watch: {
     modelValue(newValue, oldValue) {
       if (this.trixEnabled && this.$refs.trixEditor) {
-        if (!newValue && !!oldValue) this.$refs.trixEditor.editor.loadHTML('');
+        if (!newValue && !!oldValue) this.$refs.trixEditor.$refs.theEditor.editor.loadHTML('');
       }
     },
   },
