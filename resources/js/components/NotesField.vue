@@ -1,6 +1,6 @@
 <template>
   <div :class="classes">
-    <h3 class="o1-text-gray-600 o1-mb-4">{{ field.name }}</h3>
+    <h3 class="o1-text-gray-600 dark:o1-text-slate-400 o1-mb-4">{{ field.name }}</h3>
     <NoteInput
       v-if="field.addingNotesEnabled"
       v-model.trim="note"
@@ -73,7 +73,7 @@ export default {
     },
     classes() {
       const defaultClasses =
-        'notes-field o1-bg-slate-100 o1-px-4 o1-pt-4 o1-pb-2 o1-rounded-b-lg o1-overflow-hidden o1-border-b o1-border-gray-200';
+        'notes-field o1-bg-slate-100 dark:o1-bg-slate-800 o1-px-4 o1-pt-4 o1-pb-2 o1-rounded-b-lg o1-overflow-hidden o1-border-b o1-border-gray-200 dark:o1-border-gray-700';
       return defaultClasses + (this.extraClass ? ` ${this.extraClass}` : '');
     },
   },
