@@ -41,6 +41,7 @@ class Note extends Model
         // Try different combinations
         if (!empty($user->name)) return $user->name;
         if (!empty($user->first_name)) return $user->first_name . (!empty($user->last_name) ? " {$user->last_name}" : '');
+        if (!empty($user->email)) return $user->email;
         return __('User');
     }
 
