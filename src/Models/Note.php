@@ -11,7 +11,7 @@ class Note extends Model
 {
     protected $table = 'nova_notes';
     protected $casts = ['system' => 'bool'];
-    protected $fillable = ['model_id', 'model_type', 'text', 'created_by', 'system'];
+    protected $fillable = ['model_id', 'model_type', 'text', 'created_by', 'system', 'notable_type', 'notable_id'];
     protected $hidden = ['createdBy', 'notable_type', 'notable_id'];
     protected $appends = ['created_by_avatar_url', 'created_by_name', 'can_delete'];
 
