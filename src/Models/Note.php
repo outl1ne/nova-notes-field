@@ -63,7 +63,12 @@ class Note extends Model
     {
         if (Gate::has('delete-nova-note')) return Gate::check('delete-nova-note', $this);
 
-        $user = Auth::user();
+        if (config()->get('nova.guard')) {
+            $user = Auth::guard(config('nova.guard'))->user();
+        } else {
+            $user = Auth::user();
+        }
+
         if (empty($user)) return false;
 
         $createdBy = $this->createdBy;
