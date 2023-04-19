@@ -93,9 +93,7 @@ export default {
 
       try {
         await Nova.request().patch(`/nova-vendor/nova-notes/notes/${this.note.id}`, {
-          data: {
-            note: this.editedText,
-          },
+          note: this.editedText,
         });
         this.isEditing = false;
         this.$emit('noteEdited', { note: this.note, editedText: this.editedText });
