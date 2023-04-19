@@ -13,7 +13,7 @@ class Note extends Model
     protected $casts = ['system' => 'bool'];
     protected $fillable = ['model_id', 'model_type', 'text', 'created_by', 'system', 'notable_type', 'notable_id'];
     protected $hidden = ['createdBy', 'notable_type', 'notable_id'];
-    protected $appends = ['created_by_avatar_url', 'created_by_name', 'can_delete'];
+    protected $appends = ['created_by_avatar_url', 'created_by_name', 'can_delete', 'can_edit'];
 
     public function __construct(array $attributes = [])
     {
@@ -62,6 +62,24 @@ class Note extends Model
     public function getCanDeleteAttribute()
     {
         if (Gate::has('delete-nova-note')) return Gate::check('delete-nova-note', $this);
+
+        if (config()->get('nova.guard')) {
+            $user = Auth::guard(config('nova.guard'))->user();
+        } else {
+            $user = Auth::user();
+        }
+
+        if (empty($user)) return false;
+
+        $createdBy = $this->createdBy;
+        if (empty($createdBy)) return false;
+
+        return $user->id === $createdBy->id;
+    }
+
+    public function getCanEditAttribute()
+    {
+        if (Gate::has('edit-nova-note')) return Gate::check('edit-nova-note', $this);
 
         if (config()->get('nova.guard')) {
             $user = Auth::guard(config('nova.guard'))->user();

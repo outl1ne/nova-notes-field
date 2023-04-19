@@ -41,6 +41,29 @@ class NotesController extends Controller
         return response('', 204);
     }
 
+    // EDIT /notes
+    public function editNote(Request $request)
+    {
+        $validationResult = $this->validateRequest($request);
+        if ($validationResult['has_errors'] === true) return response()->json($validationResult['errors'], 400);
+
+        $model = $validationResult['model'];
+        $noteId = $request->input('noteId');
+        $noteText = $request->input('note');
+
+        if (empty($noteId)) return response()->json(['errors' => ['noteId' => 'required']], 400);
+        if (empty($noteText)) return response(['errors' => ['note' => 'required']], 400);
+
+        $note = $model->notes()->where('id', $noteId)->first();
+        if (empty($note)) return response('', 204);
+
+        if (!$note->can_edit) return response()->json(['error' => 'unauthorized'], 400);
+
+        $model->editNote($noteId, $noteText);
+
+        return response('', 204);
+    }
+
     // DELETE /notes
     public function deleteNote(Request $request)
     {

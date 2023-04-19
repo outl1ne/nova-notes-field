@@ -17,6 +17,8 @@
       :note="note"
       :key="note.id"
       :date-format="dateFormat"
+      :trixEnabled="trixEnabled"
+      @noteEdited="onNoteEdited"
       @onDeleteRequested="onNoteDeleteRequested"
     />
 
@@ -122,6 +124,10 @@ export default {
 
       this.showDeleteConfirmation = false;
       this.loading = false;
+    },
+    onNoteEdited({ note, editedText }) {
+      note.text = editedText;
+      this.fetchNotes();
     },
     onNoteDeleteRequested(note) {
       this.showDeleteConfirmation = true;
