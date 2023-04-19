@@ -3,7 +3,7 @@
   "novaNotesField.addNote": "Add note",
   "novaNotesField.showMoreNotes": "Show all notes (:hiddenNoteCount more)",
   "novaNotesField.edit": "Edit",
-  "novaNotesField.updateNote": "Update note",
+  "novaNotesField.updateNote": "Update",
   "novaNotesField.delete": "Delete",
   "novaNotesField.deleteConfirmation": "Are you sure you want to delete this note?",
   "novaNotesField.cancel": "Cancel",

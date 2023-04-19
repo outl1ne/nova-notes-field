@@ -46,19 +46,17 @@
 
           <span
             v-if="!note.system && note.can_edit"
-            class="o1-text-xs hover:o1-underline o1-cursor-pointer o1-text-primary-400"
+            class="o1-text-xs hover:o1-underline o1-cursor-pointer o1-text-primary-400 o1-mr-2"
             @click="onEditRequested"
+            >[{{ __('novaNotesField.edit') }}]</span
           >
-            [{{ __('novaNotesField.edit') }}]
-          </span>
           <span
             v-if="!note.system && note.can_delete"
             class="o1-text-xs hover:o1-underline o1-cursor-pointer"
             style="color: #e74c3c"
             @click="$emit('onDeleteRequested', note)"
+            >[{{ __('novaNotesField.delete') }}]</span
           >
-            [{{ __('novaNotesField.delete') }}]
-          </span>
         </div>
 
         <!-- Content -->
@@ -94,10 +92,8 @@ export default {
       this.loading = true;
 
       try {
-        await Nova.request().patch(`/nova-vendor/nova-notes/notes`, {
-          params: this.params,
+        await Nova.request().patch(`/nova-vendor/nova-notes/notes/${this.note.id}`, {
           data: {
-            noteId: this.note.id,
             note: this.editedText,
           },
         });
@@ -106,6 +102,7 @@ export default {
       } catch (e) {
         Nova.error('Unknown error when trying to edit the note.');
       }
+
       this.loading = false;
     },
   },

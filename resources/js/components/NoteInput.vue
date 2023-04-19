@@ -28,7 +28,7 @@
         type="button"
         :disabled="loading || !modelValue"
       >
-        {{ editing ? __('novaNotesFiled.updateNote') : __('novaNotesField.addNote') }}
+        {{ editing ? __('novaNotesField.updateNote') : __('novaNotesField.addNote') }}
       </DefaultButton>
     </div>
   </div>
