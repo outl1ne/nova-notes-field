@@ -94,10 +94,10 @@ To edit notes programmatically, use the `editNote` method provided by the `HasNo
  * Edit a note with the given ID and text.
  *
  * @param int|string $noteId The ID of the note to edit.
- * @param string $note The note text which can contain raw HTML.
+ * @param string $text The note text which can contain raw HTML.
  * @return \Outl1ne\NovaNotesField\Models\Note
  **/
-public function editNote($noteId, $note)
+public function editNote($noteId, $text)
 ```
 
 _Alternatively, you can simply update an existing Note record that's already in memory via standard Eloquent methods:_
