@@ -11,8 +11,8 @@
   </template>
   <template v-else>
     <div
-      class="o1-w-3/5 o1-bg-white dark:o1-bg-slate-800 o1-rounded-md o1-border o1-border-gray-200 dark:o1-border-gray-700 o1-px-2 o1-py-2 o1-flex o1-mb-2 o1-mt-2"
-      :class="{ 'w-full': fullWidth, 'w-3/5': !fullWidth }"
+      class="o1-bg-white dark:o1-bg-slate-800 o1-rounded-md o1-border o1-border-gray-200 dark:o1-border-gray-700 o1-px-2 o1-py-2 o1-flex o1-mb-2 o1-mt-2"
+      :class="{ 'w-full': fullWidth, 'o1-w-3/5': !fullWidth }"
     >
       <div class="o1-rounded-lg o1-w-12 o1-h-12 o1-mr-3 o1-overflow-hidden o1-text-center" style="flex-shrink: 0">
         <!-- Image -->
