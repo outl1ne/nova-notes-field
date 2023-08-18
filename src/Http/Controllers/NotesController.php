@@ -5,6 +5,7 @@ namespace Outl1ne\NovaNotesField\Http\Controllers;
 use Laravel\Nova\Nova;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Outl1ne\NovaNotesField\Models\Note;
 
 class NotesController extends Controller
 {
@@ -37,6 +38,22 @@ class NotesController extends Controller
         if (empty($note)) return response(['errors' => ['note' => 'required']], 400);
 
         $model->addNote($note, true, false);
+
+        return response('', 204);
+    }
+
+    // PATCH /notes/{note}
+    public function editNote(Request $request, Note $note)
+    {
+        $noteText = $request->input('note');
+
+        if (empty($noteText)) return response(['errors' => ['note' => 'required']], 400);
+
+        if (!$note->can_edit) return response()->json(['error' => 'unauthorized'], 400);
+
+        $note->update([
+            'text' => $noteText,
+        ]);
 
         return response('', 204);
     }

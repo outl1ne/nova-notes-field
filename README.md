@@ -15,6 +15,7 @@ This [Laravel Nova](https://nova.laravel.com) package adds a notes field to Nova
 - Notes field on Detail view
 - Differentiation between user-added and system-added notes
 - Ability to add notes through the UI or programmatically
+- Ability to edit user-made notes
 - Ability to delete user-made notes (w/ confirmation modal)
 - Customizable placeholder support
 - Set ability to hide or show the 'Add Note' button
@@ -84,6 +85,34 @@ To add notes programmatically, use the method provided by the `HasNotes` trait:
 public function addNote($note, $user = true, $system = true)
 ```
 
+## Editing notes programmatically
+
+To edit notes programmatically, use the `editNote` method provided by the `HasNotes` trait:
+
+```php
+/**
+ * Edit a note with the given ID and text.
+ *
+ * @param int|string $noteId The ID of the note to edit.
+ * @param string $text The note text which can contain raw HTML.
+ * @return \Outl1ne\NovaNotesField\Models\Note
+ **/
+public function editNote($noteId, $text)
+```
+
+_Alternatively, you can simply update an existing Note record that's already in memory via standard Eloquent methods:_
+```php
+$note = $notable->notes()->where('id', '=', $noteId)->first();
+
+$note->update([
+    'text' => $noteText,
+]);
+
+// Or...
+$note->text = $noteText;
+$note->save();
+```
+
 ## Configuration
 
 ### Publish configuration
@@ -105,11 +134,11 @@ The available configuration option(s):
 | full_width_inputs | boolean            | Optionally force all notes fields to display in full width.                                                                                                                                                         |
 | display_order     | string             | Optionally set the sort order for notes. Default is `DESC`.                                                                                                                                                         |
 
-## Custom delete authorization
+## Custom edit & delete authorization
 
-By default, only the user that wrote the note can delete it and no one can delete system notes.
+By default, only the user that wrote the note can edit/delete it and no one can edit/delete system notes.
 
-You can define which user(s) can delete which notes by defining a new Laravel authorization Gate called `delete-nova-note`.
+You can define which user(s) can edit/delete which notes by defining a new Laravel authorization Gate called `edit-nova-note` and `delete-note-note` respectively.
 
 In your `AuthServiceProvider.php` add a Gate definition like so:
 
@@ -121,8 +150,12 @@ use Outl1ne\NovaNotesField\Models\Note;
 
 public function boot()
 {
+  Gate::define('edit-nova-note', function ($user, Note $note) {
+    // Do whatever here to add custom edit authorization logic, ie:
+    return $note->created_by === $user->id || $user->isAdmin;
+  });
   Gate::define('delete-nova-note', function ($user, Note $note) {
-    // Do whatever here, ie:
+    // Do whatever here to add custom delete authorization logic, ie:
     return $note->created_by === $user->id || $user->isAdmin;
   });
 }

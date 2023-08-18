@@ -26,6 +26,22 @@ trait HasNotes
     }
 
     /**
+     * Edit a note with the given ID and text.
+     *
+     * @param int|string $noteId The ID of the note to edit.
+     * @param string $text The note text which can contain raw HTML.
+     * @return \Outl1ne\NovaNotesField\Models\Note
+     **/
+    public function editNote($noteId, $text)
+    {
+        $note = $this->notes()->where('id', '=', $noteId)->firstOrFail();
+        $note->update([
+            'text' => $text,
+        ]);
+        return $note;
+    }
+
+    /**
      * Deletes a note with given ID and dissociates it from the model.
      *
      * @param int|string $noteId The ID of the note to delete.

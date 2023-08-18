@@ -28,7 +28,7 @@
         type="button"
         :disabled="loading || !modelValue"
       >
-        {{ __('novaNotesField.addNote') }}
+        {{ editing ? __('novaNotesField.updateNote') : __('novaNotesField.addNote') }}
       </DefaultButton>
     </div>
   </div>
@@ -36,7 +36,7 @@
 
 <script>
 export default {
-  props: ['placeholder', 'modelValue', 'loading', 'trixEnabled', 'fullWidth'],
+  props: ['placeholder', 'modelValue', 'loading', 'trixEnabled', 'fullWidth', 'editing'],
   methods: {
     onEnter(e) {
       if (e.shiftKey) return true;
