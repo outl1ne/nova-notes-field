@@ -1,0 +1,41 @@
+dist/css/entry.css
+  s_2a974d1c904167::t_573bc5c5db5944 1
+dist/js/entry.js
+  s_2a974d1c904167::t_573bc5c5db5944 2
+tailwind.config.js
+  s_2a974d1c904167::t_14a99ccabd2f7e 3-12,17-21
+resources/js/components/NotesField.vue
+  s_2a974d1c904167::t_0f2923636f7658 88
+  s_2a974d1c904167::t_34e2ff62f489e1 3
+resources/js/components/AssigneeSelect.vue
+  s_2a974d1c904167::t_bb0dd16e3207f2 98-100
+  s_2a974d1c904167::t_a989a1f8f608fe 113,195
+  s_2a974d1c904167::t_5a4b38332d5ec9 168
+  s_2a974d1c904167::t_13b41b235a6ef3 253,256
+  s_2a974d1c904167::t_c6e41ccdd9150e 114,130,143,178,203,215,236,245
+  s_2a974d1c904167::t_6353959fabacb3 122,199
+  s_2a974d1c904167::t_f067d1788de42b 124,138,185,204,220,231
+  s_2a974d1c904167::t_6f98396a4c2fc4 115,144,165,179,216,224
+  s_2a974d1c904167::t_cad83333b89569 123,137,154,184,210,219,239
+resources/js/components/Note.vue
+  s_2a974d1c904167::t_fb1eff50d99b01 21,23
+  s_2a974d1c904167::t_834b01027ce756 88
+  s_2a974d1c904167::t_82810349b797ce 145
+  s_2a974d1c904167::t_31bd5497270c54 115
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "0b7c3a661c7ee8308c1b19593a331978a098797f",
+  "prompts": {},
+  "sessions": {
+    "s_2a974d1c904167": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "49333801-aa10-4f56-a867-cf8bbf9e0cef",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Tarvo Reinpalu <tarvo@versioon.ee>"
+    }
+  }
+}
