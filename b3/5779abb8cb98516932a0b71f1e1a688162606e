@@ -1,0 +1,42 @@
+src/Http/Controllers/NotesController.php
+  s_8a13205b186150::t_c27fc358ac847c 86-99
+resources/js/components/NotesField.vue
+  s_8a13205b186150::t_a939b4dd8cabeb 28
+  s_8a13205b186150::t_da675de2c8e457 169-171
+dist/css/entry.css
+  s_8a13205b186150::t_9cd0c9d879e421 1
+resources/js/components/Note.vue
+  s_8a13205b186150::t_c0770f353aad73 93-95
+  s_8a13205b186150::t_52eca0568dd92b 154
+  s_8a13205b186150::t_e1478d39472cc6 189-194
+  s_8a13205b186150::t_889c99e77c6d56 221-257
+  s_8a13205b186150::t_035cf840277486 90,97-99,103-112
+  s_8a13205b186150::t_ae1c5614052c30 91-92,96
+resources/js/components/AssigneeSelect.vue
+  s_8a13205b186150::t_4ba396eb7203a0 2-28,30-32,34-38,40-48
+  s_8a13205b186150::t_6603dda603db13 77-83,89-92
+dist/js/entry.js
+  s_8a13205b186150::t_9cd0c9d879e421 2
+lang/en.json
+  s_8a13205b186150::t_f9ff779b1dc6d8 18
+lang/et.json
+  s_8a13205b186150::t_173ae030a42188 18
+routes/api.php
+  s_8a13205b186150::t_b2e32305b6d914 8
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.14",
+  "base_commit_sha": "b35779abb8cb98516932a0b71f1e1a688162606e",
+  "prompts": {},
+  "sessions": {
+    "s_8a13205b186150": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "7dd42bd2-c663-46c9-9b13-b8072adc9b64",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "Tarvo Reinpalu <tarvo@versioon.ee>"
+    }
+  }
+}
